@@ -1,0 +1,18 @@
+.footer {
+	background-color: var(--primary);
+	color: var(--white);
+	padding: 8px;
+	border-radius: 8px 8px 0 0;
+
+	display: flex;
+	justify-content: center;
+}
+
+.link {
+	font-weight: 500;
+	transition: color 0.15s ease;
+
+	&:hover {
+		color: var(--highlight);
+	}
+}
