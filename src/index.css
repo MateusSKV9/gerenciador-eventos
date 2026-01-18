@@ -1,5 +1,6 @@
 :root {
 	--primary: #202124;
+	--secondary: #f7f7f7;
 	--black: #202124;
 	--white: #fff;
 	--highlight: #00f6ff;
@@ -40,6 +41,12 @@ body {
 
 #root > * {
 	width: 100%;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
 a {
