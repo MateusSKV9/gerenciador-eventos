@@ -1,4 +1,5 @@
 import { Event } from "../../features/events/components/Event/Event";
+import { Button } from "../../shared/components/Button/Button";
 import styles from "./Events.module.css";
 
 const events = [
@@ -10,7 +11,15 @@ const events = [
 export function Events() {
 	return (
 		<section>
-			<h1>Eventos</h1>
+			<header className={styles.header}>
+				<h1>Eventos</h1>
+
+				<div className={styles.container_buttons}>
+					<Button handleClick={showModal}>Novo Evento</Button>
+					<Button>Exibição</Button>
+					<Button>Filtrar por</Button>
+				</div>
+			</header>
 
 			<div className={styles.container_events}>
 				{events.map((event) => (
