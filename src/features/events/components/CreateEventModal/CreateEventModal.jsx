@@ -1,10 +1,11 @@
 import { createPortal } from "react-dom";
 import styles from "./CreateEventModal.module.css";
+import { EventForm } from "../EventForm/EventForm";
 
 export function CreateEventModal({ close }) {
 	return createPortal(
-		<div className={styles.overlay}>
-			<div className={styles.modal}>
+		<div onClick={close} className={styles.overlay}>
+			<div onClick={(e) => e.stopPropagation()} className={styles.modal}>
 				<header className={styles.header}>
 					<h2>Criando Evento</h2>
 
@@ -17,11 +18,9 @@ export function CreateEventModal({ close }) {
 						</svg>
 					</button>
 				</header>
+
 				<div className={styles.body}>
-					<form>
-						<label htmlFor="">Nome</label>
-						<input type="text" name="" id="" />
-					</form>
+					<EventForm textSubmitButton="Salvar" />
 				</div>
 			</div>
 		</div>,

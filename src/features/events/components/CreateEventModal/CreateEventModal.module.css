@@ -12,14 +12,21 @@
 }
 
 .modal {
-	background-color: var(--white);
+	max-width: 600px;
+	width: 100%;
+	background-color: var(--secondary);
 	padding: 24px;
 	border-radius: 8px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
 }
 
 .header {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	padding-bottom: 4px;
 	border-bottom: 1px solid black;
 }
@@ -31,7 +38,19 @@
 	background-color: #f74c4c;
 	border: none;
 	border-radius: 4px;
-	padding: 4px;
+	padding: 6px;
+	cursor: pointer;
+	transition: all 0.15s ease;
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 0px 3px 3px var(--box-shadow);
+	}
+
+	&:active {
+		transform: translateY(0px) scale(0.98);
+		box-shadow: 0px 0px 0px var(--box-shadow);
+	}
 }
 
 .close_icon {
