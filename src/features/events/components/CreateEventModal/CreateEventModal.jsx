@@ -1,8 +1,16 @@
 import { createPortal } from "react-dom";
 import styles from "./CreateEventModal.module.css";
 import { EventForm } from "../EventForm/EventForm";
+import { useEffect } from "react";
 
 export function CreateEventModal({ close }) {
+	useEffect(() => {
+		document.body.style.overflow = "hidden";
+		return () => {
+			document.body.style.overflow = "auto";
+		};
+	}, []);
+
 	return createPortal(
 		<div onClick={close} className={styles.overlay}>
 			<div onClick={(e) => e.stopPropagation()} className={styles.modal}>
