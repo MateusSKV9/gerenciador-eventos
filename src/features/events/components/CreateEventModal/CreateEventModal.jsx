@@ -20,7 +20,7 @@ export function CreateEventModal({ close }) {
 				</header>
 
 				<div className={styles.body}>
-					<EventForm textSubmitButton="Salvar" />
+					<EventForm close={close} textSubmitButton="Salvar" />
 				</div>
 			</div>
 		</div>,

@@ -5,15 +5,22 @@ import { Form } from "../../../../shared/components/Form/Form";
 import { Input } from "../../../../shared/components/Input/Input";
 import { Select } from "../../../../shared/components/Select/Select";
 import styles from "./EventForm.module.css";
+import { format } from "date-fns";
 
-export function EventForm({ textSubmitButton }) {
+export function EventForm({ close, textSubmitButton }) {
 	const { createEvent } = useEvents();
 	const { categories } = useCategories();
 
 	const [event, setEvent] = useState({});
 
-	const handleSubmit = () => {
-		createEvent({ id: crypto.randomUUID(), creationDate: new Date(), ...event });
+	const handleSubmit = (e) => {
+		try {
+			e.preventDefault();
+			createEvent({ id: crypto.randomUUID(), creationDate: format(new Date(), "yyyy-MM-dd"), ...event });
+			close();
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	const handleChange = (e) => {
