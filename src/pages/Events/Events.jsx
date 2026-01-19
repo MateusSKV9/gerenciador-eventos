@@ -8,6 +8,8 @@ import { useEvents } from "../../hooks/useEvents";
 import { differenceInDays, startOfDay, parseISO } from "date-fns";
 
 export function Events() {
+	const { events } = useEvents();
+
 	const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
 	const showModal = () => setIsCreateModalOpen(true);
