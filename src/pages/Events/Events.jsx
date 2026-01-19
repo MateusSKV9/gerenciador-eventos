@@ -3,18 +3,36 @@ import { Event } from "../../features/events/components/Event/Event";
 import { Button } from "../../shared/components/Button/Button";
 import styles from "./Events.module.css";
 import { CreateEventModal } from "../../features/events/components/CreateEventModal/CreateEventModal";
+import { useEvents } from "../../hooks/useEvents";
 
-const events = [
-	{ id: "1", name: "Evento1", categoryId: "1", description: "blabla", data: "30/12/2030", duration: 30 },
-	{ id: "2", name: "Evento2", categoryId: "1", description: "blabla", data: "30/12/2030", duration: 30 },
-	{ id: "3", name: "Evento3", categoryId: "1", description: "blabla", data: "30/12/2030", duration: 30 },
-];
+import { differenceInDays, startOfDay, parseISO } from "date-fns";
 
 export function Events() {
 	const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
 	const showModal = () => setIsCreateModalOpen(true);
 	const closeModal = () => setIsCreateModalOpen(false);
+
+	function getDaysRemaining(expirationDate) {
+		const today = startOfDay(new Date());
+		const end = startOfDay(parseISO(expirationDate));
+
+		return differenceInDays(end, today);
+	}
+
+	function getDaysElapsed(creationDate, expirationDate) {
+		const today = startOfDay(new Date());
+		const start = startOfDay(parseISO(creationDate));
+		const end = startOfDay(parseISO(expirationDate));
+
+		const totalDays = differenceInDays(end, start);
+		const elapsed = differenceInDays(today, start);
+
+		if (totalDays <= 0) return 100;
+
+		const percentage = (elapsed / totalDays) * 100;
+		return Math.min(Math.max(percentage, 0), 100);
+	}
 
 	return (
 		<section>
@@ -29,16 +47,28 @@ export function Events() {
 			</header>
 
 			<div className={styles.container_events}>
-				{events.map((event) => (
-					<Event
-						key={event.id}
-						name={event.name}
-						categoryId={event.categoryId}
-						description={event.description}
-						date={event.data}
-						duration={event.duration}
-					/>
-				))}
+				{events.length > 0 ? (
+					<>
+						{events.map((event) => {
+							const daysRemaining = getDaysRemaining(event.expirationDate);
+							const daysElapsed = getDaysElapsed(event.creationDate, event.expirationDate);
+
+							return (
+								<Event
+									key={event.id}
+									name={event.name}
+									categoryId={event.categoryId}
+									description={event.description}
+									expirationDate={event.expirationDate}
+									daysRemaining={daysRemaining}
+									daysElapsed={daysElapsed}
+								/>
+							);
+						})}
+					</>
+				) : (
+					<h2>Sem eventos registrados.</h2>
+				)}
 			</div>
 
 			{isCreateModalOpen && <CreateEventModal close={closeModal} />}

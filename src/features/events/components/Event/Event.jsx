@@ -1,13 +1,13 @@
 import { Category } from "../../../categories/components/Category/Category";
 import styles from "./Event.module.css";
 
-export function Event({ name, description, date, duration }) {
+export function Event({ name, description, categoryId, expirationDate, daysRemaining, daysElapsed }) {
 	return (
 		<article className={styles.event}>
 			<header className={styles.header}>
 				<div className={styles.wrapper_col}>
 					<h3 className={styles.name}>{name}</h3>
-					<Category name="Importante" />
+					<Category id={categoryId} />
 				</div>
 				<svg className={styles.menu} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
 					<path
@@ -20,8 +20,8 @@ export function Event({ name, description, date, duration }) {
 				<p className={styles.description}>{description}</p>
 				<div className={styles.wrapper}>
 					<div className={styles.wrapper_col}>
-						<span className={styles.date}>{date}</span>
-						<span className={styles.duration}>{duration} Dias</span>
+						<span className={styles.date}>{expirationDate}</span>
+						<span className={styles.duration}>{daysRemaining} Dias</span>
 					</div>
 
 					<div className={styles.container_select}>
@@ -37,7 +37,7 @@ export function Event({ name, description, date, duration }) {
 						</svg>
 					</div>
 				</div>
-				<progress value={30} min="00" max="100" className={styles.progress} />
+				<progress value={daysElapsed} min="00" max="100" className={styles.progress} />
 			</div>
 		</article>
 	);
