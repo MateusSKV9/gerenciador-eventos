@@ -15,6 +15,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
+	position: relative;
 }
 
 .name {
@@ -34,9 +35,18 @@
 	gap: 8px;
 }
 
-.menu {
-	width: 35px;
+.button_menu {
+	border: none;
+	background-color: inherit;
 	border-radius: 4px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon_menu {
+	width: 35px;
 	transition: all 0.15s ease;
 	cursor: pointer;
 
@@ -44,6 +54,11 @@
 		background-color: var(--black);
 		color: var(--highlight);
 	}
+}
+
+.active {
+	background-color: var(--black);
+	color: var(--highlight);
 }
 
 .body {

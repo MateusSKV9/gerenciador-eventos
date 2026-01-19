@@ -58,6 +58,7 @@ export function Events() {
 							return (
 								<Event
 									key={event.id}
+									id={event.id}
 									name={event.name}
 									categoryId={event.categoryId}
 									description={event.description}
