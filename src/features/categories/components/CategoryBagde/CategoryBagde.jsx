@@ -1,7 +1,7 @@
 import { useCategories } from "../../../../hooks/useCategories";
-import styles from "./Category.module.css";
+import styles from "./CategoryBagde.module.css";
 
-export function Category({ id }) {
+export function CategoryBagde({ id }) {
 	const { getCategory } = useCategories();
 	const category = getCategory(id);
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Category } from "../../../categories/components/Category/Category";
+import { CategoryBagde } from "../../../categories/components/CategoryBagde/CategoryBagde";
 import { EventMenu } from "../Menu/EventMenu";
 import styles from "./Event.module.css";
 import { useEvents } from "../../../../hooks/useEvents";
@@ -71,7 +71,7 @@ export function Event({
 			<header className={styles.header}>
 				<div className={styles.wrapper_col}>
 					<h3 className={styles.name}>{name}</h3>
-					<Category id={categoryId} />
+					<CategoryBagde id={categoryId} />
 				</div>
 				<button
 					className={`${styles.button_menu} ${isMenuOpen && styles.active}`}
