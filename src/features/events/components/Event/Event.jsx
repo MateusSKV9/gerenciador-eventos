@@ -1,16 +1,48 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import { Category } from "../../../categories/components/Category/Category";
 import { EventMenu } from "../Menu/EventMenu";
 import styles from "./Event.module.css";
 import { useEvents } from "../../../../hooks/useEvents";
+import { format, parseISO } from "date-fns";
 
-export function Event({ id, name, description, categoryId, expirationDate, daysRemaining, daysElapsed }) {
+export function Event({
+	id,
+	name,
+	description,
+	categoryId,
+	expirationDate,
+	daysRemaining,
+	daysElapsed,
+	isMenuOpen,
+	toggleMenu,
+	closeMenu,
+}) {
 	const { deleteEvent } = useEvents();
-	const [showEventMenu, setShowEventMenu] = useState(false);
+	// const [showEventMenu, setShowEventMenu] = useState(false);
+	const menuRef = useRef(null);
 
-	const toggleShowEventMenu = () => setShowEventMenu((prev) => !prev);
+	// const toggleShowEventMenu = (e) => {
+	// 	e.stopPropagation();
+	// 	setShowEventMenu((prev) => !prev);
+	// };
 
 	const handleDelete = () => deleteEvent(id);
+
+	useEffect(() => {
+		function handleClickOutside(e) {
+			if (menuRef.current && isMenuOpen && !menuRef.current.contains(e.target)) {
+				closeMenu();
+			}
+		}
+
+		document.addEventListener("click", handleClickOutside);
+
+		return () => {
+			document.removeEventListener("click", handleClickOutside);
+		};
+	}, [isMenuOpen, closeMenu]);
+
+	const displayDate = (date) => (date ? format(parseISO(date), "dd/MM/yyyy") : "--/--/----");
 
 	return (
 		<article className={styles.event}>
@@ -20,8 +52,11 @@ export function Event({ id, name, description, categoryId, expirationDate, daysR
 					<Category id={categoryId} />
 				</div>
 				<button
-					className={`${styles.button_menu} ${showEventMenu && styles.active}`}
-					onClick={toggleShowEventMenu}
+					className={`${styles.button_menu} ${isMenuOpen && styles.active}`}
+					onClick={(e) => {
+						e.stopPropagation();
+						toggleMenu();
+					}}
 					type="button"
 				>
 					<svg className={styles.icon_menu} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
@@ -32,13 +67,13 @@ export function Event({ id, name, description, categoryId, expirationDate, daysR
 						/>
 					</svg>
 				</button>
-				{showEventMenu && <EventMenu handleDelete={handleDelete} />}
+				{isMenuOpen && <EventMenu innerRef={menuRef} handleDelete={handleDelete} />}
 			</header>
 			<div className={styles.body}>
 				<p className={styles.description}>{description}</p>
 				<div className={styles.wrapper}>
 					<div className={styles.wrapper_col}>
-						<span className={styles.date}>{expirationDate}</span>
+						<span className={styles.date}>{displayDate(expirationDate)}</span>
 						<span className={styles.duration}>{daysRemaining} Dias</span>
 					</div>
 

@@ -9,7 +9,7 @@ import { differenceInDays, startOfDay, parseISO } from "date-fns";
 
 export function Events() {
 	const { events } = useEvents();
-
+	const [openMenuId, setOpenMenuId] = useState(null);
 	const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
 	const showModal = () => setIsCreateModalOpen(true);
@@ -65,6 +65,9 @@ export function Events() {
 									expirationDate={event.expirationDate}
 									daysRemaining={daysRemaining}
 									daysElapsed={daysElapsed}
+                  isMenuOpen={openMenuId === event.id}
+									toggleMenu={() => setOpenMenuId(openMenuId === event.id ? null : event.id)}
+									closeMenu={() => setOpenMenuId(null)}
 								/>
 							);
 						})}

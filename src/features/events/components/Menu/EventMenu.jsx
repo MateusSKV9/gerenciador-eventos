@@ -1,8 +1,8 @@
 import styles from "./EventMenu.module.css";
 
-export function EventMenu({ handleDelete }) {
+export function EventMenu({ innerRef, handleDelete }) {
 	return (
-		<ul className={styles.list}>
+		<ul ref={innerRef} className={styles.list}>
 			<li className={styles.item}>
 				<button className={styles.button} type="button">
 					Editar
