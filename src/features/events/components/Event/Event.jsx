@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Category } from "../../../categories/components/Category/Category";
 import { EventMenu } from "../Menu/EventMenu";
 import styles from "./Event.module.css";
@@ -21,10 +21,30 @@ export function Event({
 	// const [showEventMenu, setShowEventMenu] = useState(false);
 	const menuRef = useRef(null);
 
-	// const toggleShowEventMenu = (e) => {
-	// 	e.stopPropagation();
-	// 	setShowEventMenu((prev) => !prev);
-	// };
+	const [viewType, setViewType] = useState("days");
+
+	const handleShowModal = () => {
+		closeMenu();
+		showModal(id);
+	};
+
+	const getDurationText = () => {
+		if (viewType === "week") {
+			const weeks = Math.floor(daysRemaining / 7);
+			const remainingDays = daysRemaining % 7;
+			return `${weeks} ${weeks > 1 ? "Semanas" : "Semana"}, ${remainingDays} ${remainingDays > 1 ? "dias" : "dia"}`;
+		}
+
+		if (viewType === "month") {
+			const months = Math.floor(daysRemaining / 30);
+			const remainingDays = daysRemaining % 30;
+			return `${months} ${months != 1 ? "Meses" : "Mês"},  ${remainingDays} ${remainingDays > 1 ? "dias" : "dia"}`;
+		}
+
+		return `${daysRemaining} ${daysRemaining > 1 ? "dias" : "dia"} `;
+	};
+
+	const handleChange = (e) => setViewType(e.target.value);
 
 	const handleDelete = () => deleteEvent(id);
 
@@ -74,7 +94,7 @@ export function Event({
 				<div className={styles.wrapper}>
 					<div className={styles.wrapper_col}>
 						<span className={styles.date}>{displayDate(expirationDate)}</span>
-						<span className={styles.duration}>{daysRemaining} Dias</span>
+						<span className={styles.duration}>{getDurationText()}</span>
 					</div>
 
 					<div className={styles.container_select}>

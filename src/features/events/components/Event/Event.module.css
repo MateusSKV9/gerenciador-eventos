@@ -80,7 +80,7 @@
 }
 
 .container_select {
-	width: 64px;
+	width: max-content;
 	position: relative;
 	cursor: pointer;
 }
@@ -97,6 +97,7 @@
 	background-color: var(--black);
 	color: var(--white);
 	width: 100%;
+  margin-right: 16px;
 }
 
 .select_icon {
@@ -106,6 +107,7 @@
 	top: 50%;
 	transform: translateY(-50%);
 	color: var(--white);
+  pointer-events: none;
 }
 
 .progress {
