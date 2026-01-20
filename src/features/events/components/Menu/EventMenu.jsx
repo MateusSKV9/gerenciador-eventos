@@ -1,10 +1,10 @@
 import styles from "./EventMenu.module.css";
 
-export function EventMenu({ innerRef, handleDelete }) {
+export function EventMenu({ innerRef, handleDelete, handleEdit }) {
 	return (
 		<ul ref={innerRef} className={styles.list}>
 			<li className={styles.item}>
-				<button className={styles.button} type="button">
+				<button onClick={handleEdit} className={styles.button} type="button">
 					Editar
 				</button>
 			</li>

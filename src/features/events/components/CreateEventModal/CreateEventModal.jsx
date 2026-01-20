@@ -2,8 +2,16 @@ import { createPortal } from "react-dom";
 import styles from "./CreateEventModal.module.css";
 import { EventForm } from "../EventForm/EventForm";
 import { useEffect } from "react";
+import { useSearchParams } from "react-router";
+import { useEvents } from "../../../../hooks/useEvents";
 
 export function CreateEventModal({ close }) {
+	const { getEvent } = useEvents();
+
+	const [searchParamns, setSearchParamns] = useSearchParams();
+	const id = searchParamns.get("event")?.toLowerCase();
+	const eventData = id ? getEvent(id) : {};
+
 	useEffect(() => {
 		document.body.style.overflow = "hidden";
 		return () => {
@@ -11,13 +19,18 @@ export function CreateEventModal({ close }) {
 		};
 	}, []);
 
+	const handleClose = () => {
+		close();
+		setSearchParamns({});
+	};
+
 	return createPortal(
-		<div onClick={close} className={styles.overlay}>
+		<div onClick={handleClose} className={styles.overlay}>
 			<div onClick={(e) => e.stopPropagation()} className={styles.modal}>
 				<header className={styles.header}>
 					<h2>Criando Evento</h2>
 
-					<button className={styles.close_button} onClick={close} type="button">
+					<button className={styles.close_button} onClick={handleClose} type="button">
 						<svg className={styles.close_icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
 							<path
 								fill="currentColor"
@@ -28,7 +41,12 @@ export function CreateEventModal({ close }) {
 				</header>
 
 				<div className={styles.body}>
-					<EventForm close={close} textSubmitButton="Salvar" />
+					<EventForm
+						key={id || "new"}
+						eventData={id ? eventData : {}}
+						close={handleClose}
+						textSubmitButton={`${id ? "Salvar" : "Criar"}`}
+					/>
 				</div>
 			</div>
 		</div>,

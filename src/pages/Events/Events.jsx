@@ -8,12 +8,8 @@ import { useEvents } from "../../hooks/useEvents";
 import { differenceInDays, startOfDay, parseISO } from "date-fns";
 
 export function Events() {
-	const { events } = useEvents();
+	const { events, isCreateModalOpen, showModal, closeModal } = useEvents();
 	const [openMenuId, setOpenMenuId] = useState(null);
-	const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-
-	const showModal = () => setIsCreateModalOpen(true);
-	const closeModal = () => setIsCreateModalOpen(false);
 
 	function getDaysRemaining(expirationDate) {
 		const today = startOfDay(new Date());
@@ -65,7 +61,7 @@ export function Events() {
 									expirationDate={event.expirationDate}
 									daysRemaining={daysRemaining}
 									daysElapsed={daysElapsed}
-                  isMenuOpen={openMenuId === event.id}
+									isMenuOpen={openMenuId === event.id}
 									toggleMenu={() => setOpenMenuId(openMenuId === event.id ? null : event.id)}
 									closeMenu={() => setOpenMenuId(null)}
 								/>

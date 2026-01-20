@@ -4,6 +4,7 @@ import { EventMenu } from "../Menu/EventMenu";
 import styles from "./Event.module.css";
 import { useEvents } from "../../../../hooks/useEvents";
 import { format, parseISO } from "date-fns";
+import { useSearchParams } from "react-router";
 
 export function Event({
 	id,
@@ -17,15 +18,16 @@ export function Event({
 	toggleMenu,
 	closeMenu,
 }) {
-	const { deleteEvent } = useEvents();
-	// const [showEventMenu, setShowEventMenu] = useState(false);
+	const { deleteEvent, showModal } = useEvents();
 	const menuRef = useRef(null);
 
 	const [viewType, setViewType] = useState("days");
+	const [, setSearchParams] = useSearchParams();
 
-	const handleShowModal = () => {
+	const handleEdit = () => {
 		closeMenu();
-		showModal(id);
+		setSearchParams({ event: id });
+		showModal();
 	};
 
 	const getDurationText = () => {
@@ -87,7 +89,7 @@ export function Event({
 						/>
 					</svg>
 				</button>
-				{isMenuOpen && <EventMenu innerRef={menuRef} handleDelete={handleDelete} />}
+				{isMenuOpen && <EventMenu innerRef={menuRef} handleEdit={handleEdit} handleDelete={handleDelete} />}
 			</header>
 			<div className={styles.body}>
 				<p className={styles.description}>{description}</p>
@@ -98,8 +100,16 @@ export function Event({
 					</div>
 
 					<div className={styles.container_select}>
-						<select className={styles.durationType} name="durationType" id="durationType">
-							<option value="dias">Dias</option>
+						<select
+							onChange={handleChange}
+							value={viewType}
+							className={styles.durationType}
+							name="durationType"
+							id="durationType"
+						>
+							<option value="days">Dias</option>
+							<option value="week">Sem.</option>
+							<option value="month">Meses</option>
 						</select>
 
 						<svg className={styles.select_icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">

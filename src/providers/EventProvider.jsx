@@ -29,6 +29,11 @@ const initialEvents = [
 ];
 
 export function EventProvider({ children }) {
+	const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+
+	const showModal = () => setIsCreateModalOpen(true);
+	const closeModal = () => setIsCreateModalOpen(false);
+
 	const [events, setEvents] = useState(() => {
 		const stored = localStorage.getItem("events");
 		return stored ? JSON.parse(stored) : initialEvents;
@@ -37,6 +42,8 @@ export function EventProvider({ children }) {
 	const createEvent = (event) => {
 		setEvents((prev) => [...prev, event]);
 	};
+
+	const getEvent = (id) => events.find((event) => event.id === id);
 
 	const updateEvent = (updatedEvent) =>
 		setEvents((prev) => prev.map((event) => (event.id === updatedEvent.id ? updatedEvent : event)));
@@ -47,7 +54,7 @@ export function EventProvider({ children }) {
 		localStorage.setItem("events", JSON.stringify(events));
 	}, [events]);
 
-	const value = { events, createEvent, updateEvent, deleteEvent };
+	const value = { events, createEvent, getEvent, updateEvent, deleteEvent, isCreateModalOpen, showModal, closeModal };
 
 	return <EventContext.Provider value={value}>{children}</EventContext.Provider>;
 }

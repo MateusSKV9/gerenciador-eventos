@@ -7,16 +7,22 @@ import { Select } from "../../../../shared/components/Select/Select";
 import styles from "./EventForm.module.css";
 import { format } from "date-fns";
 
-export function EventForm({ close, textSubmitButton }) {
-	const { createEvent } = useEvents();
+export function EventForm({ close, eventData, textSubmitButton }) {
+	const { createEvent, updateEvent } = useEvents();
 	const { categories } = useCategories();
 
-	const [event, setEvent] = useState({});
+	const [event, setEvent] = useState(eventData || {});
 
 	const handleSubmit = (e) => {
 		try {
 			e.preventDefault();
-			createEvent({ id: crypto.randomUUID(), creationDate: format(new Date(), "yyyy-MM-dd"), ...event });
+
+			if (event.id) {
+				updateEvent(event);
+			} else {
+				createEvent({ id: crypto.randomUUID(), creationDate: format(new Date(), "yyyy-MM-dd"), ...event });
+			}
+
 			close();
 		} catch (error) {
 			console.error(error);
@@ -48,7 +54,14 @@ export function EventForm({ close, textSubmitButton }) {
 					name="expirationDate"
 					type="date"
 				/>
-				<Select handleChange={handleChange} label="Categoria" id="categoryId" name="categoryId" options={categories} />
+				<Select
+					handleChange={handleChange}
+					value={event.categoryId ? event.categoryId : ""}
+					label="Categoria"
+					id="categoryId"
+					name="categoryId"
+					options={categories}
+				/>
 			</div>
 
 			<input className={styles.submitButton} type="submit" value={textSubmitButton} />
