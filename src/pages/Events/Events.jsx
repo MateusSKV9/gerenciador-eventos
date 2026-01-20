@@ -6,6 +6,7 @@ import { CreateEventModal } from "../../features/events/components/CreateEventMo
 import { useEvents } from "../../hooks/useEvents";
 
 import { differenceInDays, startOfDay, parseISO } from "date-fns";
+import { SectionHeader } from "../../shared/components/SectionHeader/SectionHeader";
 
 export function Events() {
 	const { events, isCreateModalOpen, showModal, closeModal } = useEvents();
@@ -34,15 +35,11 @@ export function Events() {
 
 	return (
 		<section>
-			<header className={styles.header}>
-				<h1>Eventos</h1>
-
-				<div className={styles.container_buttons}>
-					<Button handleClick={showModal}>Novo Evento</Button>
-					<Button>Exibição</Button>
-					<Button>Filtrar por</Button>
-				</div>
-			</header>
+			<SectionHeader title="Eventos">
+				<Button handleClick={showModal}>Novo Evento</Button>
+				<Button>Exibição</Button>
+				<Button>Filtrar por</Button>
+			</SectionHeader>
 
 			<div className={styles.container_events}>
 				{events.length > 0 ? (

@@ -1,0 +1,12 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	border-bottom: 1px solid var(--black);
+	color: var(--black);
+}
+
+.container_buttons {
+	display: flex;
+	gap: 12px;
+}
