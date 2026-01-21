@@ -6,6 +6,7 @@ import styles from "./Categories.module.css";
 import { CreateModal } from "../../shared/components/CreateModal/CreateModal";
 import { useModal } from "../../hooks/useModal";
 import { useState } from "react";
+import { CreateCategoryModal } from "../../features/categories/components/CreateCategoryModal/CreateCategoryModal";
 
 export function Categories() {
 	const { isCreateModalOpen, showModal, closeModal } = useModal();
@@ -28,12 +29,12 @@ export function Categories() {
 						isMenuOpen={isMenuOpen === category.id}
 						toggleMenu={() => setIsMenuOpen(isMenuOpen === category.id ? null : category.id)}
 						closeMenu={() => setIsMenuOpen(null)}
-            showModal={showModal}
+						showModal={showModal}
 					/>
 				))}
 			</div>
 
-			{isCreateModalOpen && <CreateModal close={closeModal} />}
+			{isCreateModalOpen && <CreateCategoryModal closeModal={closeModal} />}
 		</section>
 	);
 }

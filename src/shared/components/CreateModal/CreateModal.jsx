@@ -2,14 +2,11 @@ import { createPortal } from "react-dom";
 import styles from "./CreateModal.module.css";
 import { useSearchParams } from "react-router";
 import { CategoryForm } from "../../../features/categories/components/CategoryForm/CategoryForm";
-import { useEffect } from "react";
+import { Children, useEffect } from "react";
 
-export function CreateModal({ close }) {
-	// const { getEvent } = useEvent();
-
+export function CreateModal({ close, children }) {
 	const [searchParamns, setSearchParamns] = useSearchParams();
 	const id = searchParamns.get("event")?.toLowerCase();
-	// const eventData = id ? getEvent(id) : {};
 
 	useEffect(() => {
 		document.body.style.overflow = "hidden";
@@ -39,9 +36,7 @@ export function CreateModal({ close }) {
 					</button>
 				</header>
 
-				<div className={styles.body}>
-					<CategoryForm key={id} close={handleClose} textSubmitButton={`${id ? "Salvar" : "Criar"}`} />
-				</div>
+				<div className={styles.body}>{children}</div>
 			</div>
 		</div>,
 		document.getElementById("modal-root")
