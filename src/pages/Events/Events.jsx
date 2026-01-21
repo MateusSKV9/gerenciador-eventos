@@ -11,6 +11,7 @@ import { SectionHeader } from "../../shared/components/SectionHeader/SectionHead
 export function Events() {
 	const { events, isCreateModalOpen, showModal, closeModal } = useEvents();
 	const [openMenuId, setOpenMenuId] = useState(null);
+	// const { getCategory } = useCategories();
 
 	function getDaysRemaining(expirationDate) {
 		const today = startOfDay(new Date());

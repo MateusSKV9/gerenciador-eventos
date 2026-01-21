@@ -28,7 +28,7 @@ export function CreateEventModal({ close }) {
 		<div onClick={handleClose} className={styles.overlay}>
 			<div onClick={(e) => e.stopPropagation()} className={styles.modal}>
 				<header className={styles.header}>
-					<h2>Criando Evento</h2>
+					<h2> {id ? "Editando Evento" : "Criando Evento"}</h2>
 
 					<button className={styles.close_button} onClick={handleClose} type="button">
 						<svg className={styles.close_icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">

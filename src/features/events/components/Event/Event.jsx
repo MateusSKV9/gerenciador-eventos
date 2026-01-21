@@ -71,7 +71,7 @@ export function Event({
 			<header className={styles.header}>
 				<div className={styles.wrapper_col}>
 					<h3 className={styles.name}>{name}</h3>
-					<CategoryBagde id={categoryId} />
+					{categoryId && <CategoryBagde id={categoryId} />}
 				</div>
 				<button
 					className={`${styles.button_menu} ${isMenuOpen && styles.active}`}

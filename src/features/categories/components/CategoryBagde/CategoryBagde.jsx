@@ -5,5 +5,13 @@ export function CategoryBagde({ id }) {
 	const { getCategory } = useCategories();
 	const category = getCategory(id);
 
-	return <div className={styles.category}>{category.name}</div>;
+	return (
+		<>
+			{category && (
+				<div className={styles.category} style={{ backgroundColor: category?.color }}>
+					{category?.name}
+				</div>
+			)}
+		</>
+	);
 }
