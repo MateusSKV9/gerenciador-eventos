@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { CategoryBagde } from "../../../categories/components/CategoryBagde/CategoryBagde";
-import { EventMenu } from "../Menu/EventMenu";
 import styles from "./Event.module.css";
 import { useEvents } from "../../../../hooks/useEvents";
 import { format, parseISO } from "date-fns";
 import { useSearchParams } from "react-router";
+import { ItemMenu } from "../../../../shared/components/ItemMenu/ItemMenu";
 
 export function Event({
 	id,
@@ -89,8 +89,9 @@ export function Event({
 						/>
 					</svg>
 				</button>
-				{isMenuOpen && <EventMenu innerRef={menuRef} handleEdit={handleEdit} handleDelete={handleDelete} />}
+				{isMenuOpen && <ItemMenu innerRef={menuRef} handleEdit={handleEdit} handleDelete={handleDelete} />}
 			</header>
+
 			<div className={styles.body}>
 				<p className={styles.description}>{description}</p>
 				<div className={styles.wrapper}>

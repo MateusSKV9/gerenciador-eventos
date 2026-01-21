@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { CategoryContext } from "../hooks/useCategories";
 
 const initialCategories = [
-	{ id: "1", name: "Importante" },
-	{ id: "2", name: "Trabalho" },
+	{ id: "1", name: "Importante", color: "#ff2424" },
+	{ id: "2", name: "Trabalho", color: "#2432ff" },
+	{ id: "3", name: "Aniversário", color: "#ff007b" },
 ];
 
 export function CategoryProvider({ children }) {

@@ -1,4 +1,4 @@
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { EventContext } from "../hooks/useEvents";
 
 const initialEvents = [
@@ -13,7 +13,7 @@ const initialEvents = [
 	{
 		id: "2",
 		name: "Evento2",
-		categoryId: "1",
+		categoryId: "2",
 		description: "blabla",
 		creationDate: "2026-01-19",
 		expirationDate: "2026-02-01",
@@ -21,7 +21,7 @@ const initialEvents = [
 	{
 		id: "3",
 		name: "Evento3",
-		categoryId: "1",
+		categoryId: "3",
 		description: "blabla",
 		creationDate: "2026-01-01",
 		expirationDate: "2027-03-12",

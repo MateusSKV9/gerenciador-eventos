@@ -11,7 +11,6 @@ import { SectionHeader } from "../../shared/components/SectionHeader/SectionHead
 export function Events() {
 	const { events, isCreateModalOpen, showModal, closeModal } = useEvents();
 	const [openMenuId, setOpenMenuId] = useState(null);
-	// const { getCategory } = useCategories();
 
 	function getDaysRemaining(expirationDate) {
 		const today = startOfDay(new Date());
@@ -29,8 +28,8 @@ export function Events() {
 		const elapsed = differenceInDays(today, start);
 
 		if (totalDays <= 0) return 100;
-
 		const percentage = (elapsed / totalDays) * 100;
+
 		return Math.min(Math.max(percentage, 0), 100);
 	}
 

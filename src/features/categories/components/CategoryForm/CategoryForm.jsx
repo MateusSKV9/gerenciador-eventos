@@ -1,4 +1,3 @@
-// import { useSearchParams } from "react-router";
 import { Form } from "../../../../shared/components/Form/Form";
 import { Input } from "../../../../shared/components/Input/Input";
 import { useCategories } from "../../../../hooks/useCategories";

@@ -7,7 +7,6 @@ export function CreateCategoryModal({ closeModal }) {
 	const { getCategory } = useCategories();
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get("category");
-
 	const categoryData = id ? getCategory(id) : { name: "", color: "#000000" };
 
 	return (

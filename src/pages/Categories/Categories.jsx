@@ -3,7 +3,6 @@ import { useCategories } from "../../hooks/useCategories";
 import { Button } from "../../shared/components/Button/Button";
 import { SectionHeader } from "../../shared/components/SectionHeader/SectionHeader";
 import styles from "./Categories.module.css";
-import { CreateModal } from "../../shared/components/CreateModal/CreateModal";
 import { useModal } from "../../hooks/useModal";
 import { useState } from "react";
 import { CreateCategoryModal } from "../../features/categories/components/CreateCategoryModal/CreateCategoryModal";

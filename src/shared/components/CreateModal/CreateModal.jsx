@@ -1,8 +1,7 @@
 import { createPortal } from "react-dom";
 import styles from "./CreateModal.module.css";
 import { useSearchParams } from "react-router";
-import { CategoryForm } from "../../../features/categories/components/CategoryForm/CategoryForm";
-import { Children, useEffect } from "react";
+import { useEffect } from "react";
 
 export function CreateModal({ close, children }) {
 	const [searchParamns, setSearchParamns] = useSearchParams();
@@ -10,6 +9,7 @@ export function CreateModal({ close, children }) {
 
 	useEffect(() => {
 		document.body.style.overflow = "hidden";
+
 		return () => {
 			document.body.style.overflow = "auto";
 		};

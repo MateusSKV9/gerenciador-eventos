@@ -1,12 +1,13 @@
 import { useSearchParams } from "react-router";
 import { useCategories } from "../../../../hooks/useCategories";
-import { Input } from "../../../../shared/components/Input/Input";
 import { ItemMenu } from "../../../../shared/components/ItemMenu/ItemMenu";
 import styles from "./CategoryCard.module.css";
+import { useEffect, useRef } from "react";
 
 export function CategoryCard({ id, name, color, isMenuOpen, toggleMenu, closeMenu, showModal }) {
 	const { deleteCategory } = useCategories();
 	const [, setSearchParamns] = useSearchParams();
+	const menuRef = useRef(null);
 
 	const handleDelete = () => {
 		deleteCategory(id);
@@ -19,6 +20,20 @@ export function CategoryCard({ id, name, color, isMenuOpen, toggleMenu, closeMen
 		showModal();
 		console.log("aas");
 	};
+
+	useEffect(() => {
+		function handleClickOutside(e) {
+			if (isMenuOpen && menuRef.current && !menuRef.current.contains(e.target)) {
+				closeMenu();
+			}
+		}
+
+		document.addEventListener("click", handleClickOutside);
+
+		return () => {
+			document.removeEventListener("click", handleClickOutside);
+		};
+	}, [isMenuOpen, closeMenu]);
 
 	return (
 		<div className={styles.card}>
@@ -40,8 +55,9 @@ export function CategoryCard({ id, name, color, isMenuOpen, toggleMenu, closeMen
 						/>
 					</svg>
 				</button>
-				{isMenuOpen && <ItemMenu handleEdit={handleEdit} handleDelete={handleDelete} />}
+				{isMenuOpen && <ItemMenu innerRef={menuRef} handleEdit={handleEdit} handleDelete={handleDelete} />}
 			</div>
+
 			<div className={styles.wrapper}>
 				<span>Cor:</span>
 				<div className={styles.box_color} style={{ backgroundColor: color }}></div>
