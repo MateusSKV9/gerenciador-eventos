@@ -1,7 +1,25 @@
+import { useSearchParams } from "react-router";
+import { useCategories } from "../../../../hooks/useCategories";
 import { Input } from "../../../../shared/components/Input/Input";
+import { ItemMenu } from "../../../../shared/components/ItemMenu/ItemMenu";
 import styles from "./CategoryCard.module.css";
 
-export function CategoryCard({ name }) {
+export function CategoryCard({ id, name, color, isMenuOpen, toggleMenu, closeMenu, showModal }) {
+	const { deleteCategory } = useCategories();
+	const [, setSearchParamns] = useSearchParams();
+
+	const handleDelete = () => {
+		deleteCategory(id);
+		console.log(id);
+	};
+
+	const handleEdit = () => {
+		closeMenu();
+		setSearchParamns({ category: id });
+		showModal();
+		console.log("aas");
+	};
+
 	return (
 		<div className={styles.card}>
 			<div className={styles.wrapper}>
@@ -10,7 +28,7 @@ export function CategoryCard({ name }) {
 					className={`${styles.button_menu}`}
 					onClick={(e) => {
 						e.stopPropagation();
-						// toggleMenu();
+						toggleMenu();
 					}}
 					type="button"
 				>
@@ -22,10 +40,11 @@ export function CategoryCard({ name }) {
 						/>
 					</svg>
 				</button>
+				{isMenuOpen && <ItemMenu handleEdit={handleEdit} handleDelete={handleDelete} />}
 			</div>
 			<div className={styles.wrapper}>
 				<span>Cor:</span>
-				<div className={styles.box_color}></div>
+				<div className={styles.box_color} style={{ backgroundColor: color }}></div>
 			</div>
 		</div>
 	);
