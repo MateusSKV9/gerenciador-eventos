@@ -6,6 +6,7 @@ import { Input } from "../../../../shared/components/Input/Input";
 import { Select } from "../../../../shared/components/Select/Select";
 import styles from "./EventForm.module.css";
 import { format } from "date-fns";
+import { SubmitButton } from "../../../../shared/components/SubmitButton/SubmitButton";
 
 export function EventForm({ close, eventData, textSubmitButton }) {
 	const { createEvent, updateEvent } = useEvents();
@@ -63,8 +64,7 @@ export function EventForm({ close, eventData, textSubmitButton }) {
 					options={categories}
 				/>
 			</div>
-
-			<input className={styles.submitButton} type="submit" value={textSubmitButton} />
+			<SubmitButton text={textSubmitButton} />
 		</Form>
 	);
 }

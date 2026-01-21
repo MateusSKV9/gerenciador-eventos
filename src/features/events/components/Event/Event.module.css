@@ -125,3 +125,26 @@
 		background: #00e479;
 	}
 }
+
+.event_expired {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.event_expired * {
+	color: var(--white);
+}
+
+.event_expired .body {
+	border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.expired {
+	margin-top: -20px;
+	background-color: #c60b0b;
+	color: var(--white);
+	padding: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

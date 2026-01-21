@@ -2,6 +2,7 @@ import { Form } from "../../../../shared/components/Form/Form";
 import { Input } from "../../../../shared/components/Input/Input";
 import { useCategories } from "../../../../hooks/useCategories";
 import { useState } from "react";
+import { SubmitButton } from "../../../../shared/components/SubmitButton/SubmitButton";
 export function CategoryForm({ closeModal, categoryData, textSubmitButton }) {
 	const { createCategory, updateCategory } = useCategories();
 	const [category, setCategory] = useState(categoryData);
@@ -39,7 +40,7 @@ export function CategoryForm({ closeModal, categoryData, textSubmitButton }) {
 				label="Cor"
 				type="color"
 			/>
-			<input type="submit" value={textSubmitButton} />
+			<SubmitButton text={textSubmitButton} />
 		</Form>
 	);
 }

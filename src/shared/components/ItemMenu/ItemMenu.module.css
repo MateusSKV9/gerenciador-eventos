@@ -1,8 +1,8 @@
 .list {
 	position: absolute;
-	right: -4px;
-	z-index: 9;
-	top: 36px;
+	right: -24px;
+	z-index: 12;
+	top: 38px;
 
 	display: flex;
 	flex-direction: column;
@@ -13,6 +13,17 @@
 	padding: 8px;
 	border-radius: 4px;
 	box-shadow: 0px 3px 3px 1px var(--box-shadow);
+}
+
+.expired {
+	background-color: var(--black);
+	color: var(--white);
+}
+
+.expired .button {
+	background-color: var(--black);
+	color: var(--white);
+	border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .item {
@@ -27,6 +38,8 @@
 	font-size: 1rem;
 	cursor: pointer;
 	transition: all 0.15s ease;
+	background-color: (--secondary);
+	color: var(--black);
 
 	&:hover {
 		background-color: var(--black);

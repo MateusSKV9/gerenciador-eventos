@@ -67,7 +67,7 @@ export function Event({
 	const displayDate = (date) => (date ? format(parseISO(date), "dd/MM/yyyy") : "--/--/----");
 
 	return (
-		<article className={styles.event}>
+		<article className={`${styles.event} ${daysRemaining <= 0 && styles.event_expired}`}>
 			<header className={styles.header}>
 				<div className={styles.wrapper_col}>
 					<h3 className={styles.name}>{name}</h3>
@@ -89,7 +89,14 @@ export function Event({
 						/>
 					</svg>
 				</button>
-				{isMenuOpen && <ItemMenu innerRef={menuRef} handleEdit={handleEdit} handleDelete={handleDelete} />}
+				{isMenuOpen && (
+					<ItemMenu
+						eventExpired={daysRemaining <= 0}
+						innerRef={menuRef}
+						handleEdit={handleEdit}
+						handleDelete={handleDelete}
+					/>
+				)}
 			</header>
 
 			<div className={styles.body}>
@@ -123,6 +130,7 @@ export function Event({
 				</div>
 				<progress value={daysElapsed} min="00" max="100" className={styles.progress} />
 			</div>
+			{daysRemaining <= 0 && <div className={styles.expired}>Expirado</div>}
 		</article>
 	);
 }
