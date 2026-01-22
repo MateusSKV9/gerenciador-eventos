@@ -1,13 +1,12 @@
 .event {
+	position: relative;
 	background-color: var(--secondary);
-	padding: 20px;
 	border-radius: 12px;
 	box-shadow: 0px 3px 3px var(--box-shadow);
 	border: 1px solid rgba(0, 0, 0, 0.12);
 
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
 	color: var(--black);
 }
 
@@ -16,6 +15,13 @@
 	justify-content: space-between;
 	align-items: flex-start;
 	position: relative;
+}
+
+.body {
+	padding-top: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 }
 
 .name {
@@ -59,14 +65,6 @@
 .active {
 	background-color: var(--black);
 	color: var(--highlight);
-}
-
-.body {
-	border-top: 1px solid rgba(0, 0, 0, 0.25);
-	padding-top: 16px;
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
 }
 
 .date {
@@ -127,8 +125,8 @@
 }
 
 .event_expired {
-  background-color: var(--black);
-  color: var(--white);
+	background-color: var(--black);
+	color: var(--white);
 }
 
 .event_expired * {

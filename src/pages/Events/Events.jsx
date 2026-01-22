@@ -1,47 +1,41 @@
 import { useState } from "react";
-import { Event } from "../../features/events/components/Event/Event";
 import { Button } from "../../shared/components/Button/Button";
 import styles from "./Events.module.css";
 import { CreateEventModal } from "../../features/events/components/CreateEventModal/CreateEventModal";
 import { useEvents } from "../../hooks/useEvents";
-
-import { differenceInDays, startOfDay, parseISO } from "date-fns";
 import { SectionHeader } from "../../shared/components/SectionHeader/SectionHeader";
+import { getDaysElapsed, getDaysRemaining } from "../../utils/date";
+import { EventBase } from "../../features/events/components/EventBase/EventBase";
 
 export function Events() {
 	const { events, isCreateModalOpen, showModal, closeModal } = useEvents();
 	const [openMenuId, setOpenMenuId] = useState(null);
+	const [typeDisplay, setTypeDisplay] = useState("card");
 
-	function getDaysRemaining(expirationDate) {
-		const today = startOfDay(new Date());
-		const end = startOfDay(parseISO(expirationDate));
-
-		return differenceInDays(end, today);
-	}
-
-	function getDaysElapsed(creationDate, expirationDate) {
-		const today = startOfDay(new Date());
-		const start = startOfDay(parseISO(creationDate));
-		const end = startOfDay(parseISO(expirationDate));
-
-		const totalDays = differenceInDays(end, start);
-		const elapsed = differenceInDays(today, start);
-
-		if (totalDays <= 0) return 100;
-		const percentage = (elapsed / totalDays) * 100;
-
-		return Math.min(Math.max(percentage, 0), 100);
-	}
+	const CONTAINER_STYLE = {
+		card: styles.container_events,
+		list: styles.list_events,
+	};
 
 	return (
 		<section>
 			<SectionHeader title="Eventos">
 				<Button handleClick={showModal}>Novo Evento</Button>
-				<Button>Exibição</Button>
+
+				<div className={styles.wrapper_display}>
+					<Button
+						handleClick={() => {
+							setTypeDisplay((prev) => (prev === "card" ? "list" : "card"));
+						}}
+					>
+						{typeDisplay === "card" ? "Cards" : "Lista"}
+					</Button>
+				</div>
+
 				<Button>Filtrar por</Button>
 			</SectionHeader>
 
-			<div className={styles.container_events}>
+			<div className={CONTAINER_STYLE[typeDisplay]}>
 				{events.length > 0 ? (
 					<>
 						{events.map((event) => {
@@ -49,9 +43,10 @@ export function Events() {
 							const daysElapsed = getDaysElapsed(event.creationDate, event.expirationDate);
 
 							return (
-								<Event
+								<EventBase
 									key={event.id}
 									id={event.id}
+									view={typeDisplay}
 									name={event.name}
 									categoryId={event.categoryId}
 									description={event.description}
@@ -59,7 +54,7 @@ export function Events() {
 									daysRemaining={daysRemaining}
 									daysElapsed={daysElapsed}
 									isMenuOpen={openMenuId === event.id}
-									toggleMenu={() => setOpenMenuId(openMenuId === event.id ? null : event.id)}
+									toggleMenu={() => setOpenMenuId((prev) => (prev === event.id ? null : event.id))}
 									closeMenu={() => setOpenMenuId(null)}
 								/>
 							);

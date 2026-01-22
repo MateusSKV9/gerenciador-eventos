@@ -1,0 +1,24 @@
+.event {
+	position: relative;
+	padding: 20px;
+	gap: 10px;
+}
+
+.wrapper_content {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 2fr 2fr;
+
+	gap: 30px;
+}
+
+.wrapper_content > *:not(:first-child) {
+	border-left: 1px solid rgba(0, 0, 0, 0.12);
+	padding-left: 20px;
+}
+
+.wrapper_menu {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
