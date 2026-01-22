@@ -33,7 +33,7 @@ export function EventBase({
 		if (viewType === "week") {
 			const weeks = Math.floor(daysRemaining / 7);
 			const remainingDays = daysRemaining % 7;
-			return `${weeks} ${weeks > 1 ? "Semanas" : "Semana"}, ${remainingDays} ${remainingDays > 1 ? "dias" : "dia"}`;
+			return `${weeks} ${weeks > 1 ? "Sem." : "Sem."}, ${remainingDays} ${remainingDays > 1 ? "dias" : "dia"}`;
 		}
 
 		if (viewType === "month") {

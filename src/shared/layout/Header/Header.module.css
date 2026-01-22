@@ -3,7 +3,7 @@
 	justify-content: space-between;
 	background-color: var(--primary);
 	color: var(--white);
-	border-radius: 8px;
+	border-radius: 0px 0px 8px 8px;
 	padding: 20px 32px;
 	font-size: 1rem;
 	box-shadow: 0px 3px 3px var(--box-shadow);
@@ -11,6 +11,7 @@
 
 .logo {
 	transition: all 0.15s ease;
+
 	&:hover {
 		color: var(--highlight);
 	}
@@ -47,5 +48,10 @@
 		gap: 12px;
 		align-items: center;
 		flex-direction: column;
+		text-align: center;
+	}
+
+	.logo {
+		font-size: 0.9rem;
 	}
 }
