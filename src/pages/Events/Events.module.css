@@ -13,3 +13,39 @@
 .wrapper_display {
 	position: relative;
 }
+
+.sortSelect {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+
+	background-color: var(--secondary);
+	padding: 12px 24px;
+	border-radius: 4px 4px 0 0;
+	font-size: 1rem;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	transition: all 0.15s ease;
+	cursor: pointer;
+	font-weight: 500;
+	font-weight: 600;
+	color: var(--black);
+	outline: none;
+	text-align: center;
+
+	display: flex;
+	justify-content: center;
+
+	&:hover {
+		background-color: var(--black);
+		color: var(--highlight);
+		font-weight: 600;
+	}
+}
+
+.option {
+	background-color: var(--secondary);
+	color: var(--black);
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
