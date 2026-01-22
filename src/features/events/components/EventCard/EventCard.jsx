@@ -54,8 +54,10 @@ export function EventCard({
 				)}
 			</header>
 
+      <p className={basedStyles.description}>{description}</p>
+
+
 			<div className={`${basedStyles.body} ${styles.body}`}>
-				<p className={basedStyles.description}>{description}</p>
 				<div className={basedStyles.wrapper}>
 					<div className={basedStyles.wrapper_col}>
 						<span className={basedStyles.date}>{displayDate(expirationDate)}</span>

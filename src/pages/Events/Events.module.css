@@ -1,7 +1,8 @@
 .container_events {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 30px;
+	grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+	gap: 24px;
+	/* align-items: start; */
 }
 
 .list_events {

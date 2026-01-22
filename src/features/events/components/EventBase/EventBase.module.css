@@ -67,6 +67,10 @@
 	color: var(--highlight);
 }
 
+.description {
+	word-wrap: break-word;
+}
+
 .date {
 	font-size: 1.1rem;
 	font-weight: 300;

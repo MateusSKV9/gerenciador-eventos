@@ -64,6 +64,12 @@ export function EventForm({ close, eventData, textSubmitButton }) {
 					options={categories}
 				/>
 			</div>
+			<div className={styles.textarea_group}>
+				<label className={styles.label} htmlFor="description">
+					Descrição
+				</label>
+				<textarea onChange={handleChange} className={styles.textarea} name="description" id="description"></textarea>
+			</div>
 			<SubmitButton text={textSubmitButton} />
 		</Form>
 	);
