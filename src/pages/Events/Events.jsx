@@ -58,7 +58,12 @@ export function Events() {
 				</Button>
 
 				<div className={basedStyles.container_select}>
-					<select value={sortKey} onChange={(e) => setSortKey(e.target.value)} className={`${styles.sortSelect}`}>
+					<select
+						value={sortKey}
+						id="sortKey"
+						onChange={(e) => setSortKey(e.target.value)}
+						className={`${styles.sortSelect}`}
+					>
 						<option className={styles.option} value="">
 							Sem ordenação
 						</option>

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import styles from "./Header.module.css";
 
 const isActive = ({ isActive }) => (isActive ? styles.active : "");
@@ -6,7 +6,9 @@ const isActive = ({ isActive }) => (isActive ? styles.active : "");
 export function Header() {
 	return (
 		<header className={styles.header}>
-			<h2>Gerenciador de Tarefas</h2>
+			<Link className={styles.logo} to="/">
+				<h2>Gerenciador de Tarefas</h2>
+			</Link>
 
 			<nav className={styles.nav}>
 				<ul className={styles.list}>

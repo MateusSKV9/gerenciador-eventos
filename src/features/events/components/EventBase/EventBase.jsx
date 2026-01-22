@@ -66,6 +66,7 @@ export function EventBase({
 	const displayDate = (date) => (date ? format(parseISO(date), "dd/MM/yyyy") : "--/--/----");
 
 	const commonProps = {
+		id,
 		name,
 		categoryId,
 		description,

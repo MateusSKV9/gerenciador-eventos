@@ -5,6 +5,7 @@ import { ItemMenu } from "../../../../shared/components/ItemMenu/ItemMenu";
 import basedStyles from "./../EventBase/EventBase.module.css";
 
 export function EventRow({
+	id,
 	name,
 	categoryId,
 	description,
@@ -42,7 +43,7 @@ export function EventRow({
 								value={viewType}
 								className={basedStyles.durationType}
 								name="durationType"
-								id="durationType"
+								id={`durationType_${id}`}
 							>
 								<option value="days">Dias</option>
 								<option value="week">Sem.</option>
@@ -57,7 +58,7 @@ export function EventRow({
 						</div>
 					</div>
 				</div>
-				<p className={basedStyles.description}>{description}</p>
+				<p className={`${basedStyles.description} ${styles.description}`}>{description}</p>
 			</div>
 
 			{!daysRemaining && <progress value={daysElapsed} min="00" max="100" className={basedStyles.progress} />}

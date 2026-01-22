@@ -38,7 +38,7 @@ export function CategoryCard({ id, name, color, isMenuOpen, toggleMenu, closeMen
 	return (
 		<div className={styles.card}>
 			<div className={styles.wrapper}>
-				<h3>{name}</h3>
+				<h3 className={styles.name}>{name}</h3>
 				<button
 					className={`${styles.button_menu}`}
 					onClick={(e) => {

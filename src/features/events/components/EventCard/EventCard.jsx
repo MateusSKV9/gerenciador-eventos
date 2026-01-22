@@ -5,6 +5,7 @@ import styles from "./EventCard.module.css";
 import basedStyles from "./../EventBase/EventBase.module.css";
 
 export function EventCard({
+	id,
 	name,
 	categoryId,
 	description,
@@ -36,9 +37,8 @@ export function EventCard({
 					}}
 					type="button"
 				>
-					<svg className={basedStyles.icon_menu} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+					<svg className={basedStyles.icon_menu} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width={22}>
 						<path
-							width={35}
 							fill="currentColor"
 							d="M96 320C96 289.1 121.1 264 152 264C182.9 264 208 289.1 208 320C208 350.9 182.9 376 152 376C121.1 376 96 350.9 96 320zM264 320C264 289.1 289.1 264 320 264C350.9 264 376 289.1 376 320C376 350.9 350.9 376 320 376C289.1 376 264 350.9 264 320zM488 264C518.9 264 544 289.1 544 320C544 350.9 518.9 376 488 376C457.1 376 432 350.9 432 320C432 289.1 457.1 264 488 264z"
 						/>
@@ -54,8 +54,7 @@ export function EventCard({
 				)}
 			</header>
 
-      <p className={basedStyles.description}>{description}</p>
-
+			<p className={basedStyles.description}>{description}</p>
 
 			<div className={`${basedStyles.body} ${styles.body}`}>
 				<div className={basedStyles.wrapper}>
@@ -70,7 +69,7 @@ export function EventCard({
 							value={viewType}
 							className={basedStyles.durationType}
 							name="durationType"
-							id="durationType"
+							id={`durationType_${id}`}
 						>
 							<option value="days">Dias</option>
 							<option value="week">Sem.</option>

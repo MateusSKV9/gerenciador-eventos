@@ -22,10 +22,12 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	margin-top: auto;
 }
 
 .name {
 	font-size: 1.4rem;
+	word-break: break-all;
 }
 
 .wrapper {
@@ -39,6 +41,8 @@
 	flex-direction: column;
 	justify-content: flex-end;
 	gap: 8px;
+	width: 80%;
+	overflow: hidden;
 }
 
 .button_menu {
@@ -129,13 +133,13 @@
 }
 
 .event_expired {
-	background-color: var(--black);
-	color: var(--white);
+	opacity: 0.9;
+	filter: brightness(0.9);
 }
 
-.event_expired * {
+/* .event_expired * {
 	color: var(--white);
-}
+} */
 
 .event_expired .body {
 	border-top: 1px solid rgba(255, 255, 255, 0.25);
@@ -149,4 +153,5 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border: 1px solid rgba(255, 255, 255, 0.5);
 }

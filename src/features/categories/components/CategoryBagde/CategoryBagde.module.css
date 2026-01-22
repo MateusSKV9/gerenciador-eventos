@@ -4,4 +4,6 @@
 	background-color: black;
 	color: white;
 	width: max-content;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

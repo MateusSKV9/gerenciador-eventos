@@ -68,7 +68,15 @@ export function EventForm({ close, eventData, textSubmitButton }) {
 				<label className={styles.label} htmlFor="description">
 					Descrição
 				</label>
-				<textarea onChange={handleChange} className={styles.textarea} name="description" id="description"></textarea>
+				<textarea
+					value={event.description ? event.description : ""}
+					onChange={handleChange}
+					className={styles.textarea}
+					placeholder="Digite alguma anotação ou observação (opcional)"
+					name="description"
+					id="description"
+					maxLength={150}
+				></textarea>
 			</div>
 			<SubmitButton text={textSubmitButton} />
 		</Form>
