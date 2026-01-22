@@ -50,3 +50,14 @@
 	display: flex;
 	justify-content: center;
 }
+
+@media screen and (max-width: 675px) {
+	.container_events {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.sortSelect {
+		padding: 10px;
+	}
+}

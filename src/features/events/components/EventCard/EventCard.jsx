@@ -54,7 +54,7 @@ export function EventCard({
 				)}
 			</header>
 
-			<p className={basedStyles.description}>{description}</p>
+			{description && <p className={basedStyles.description}>{description}</p>}
 
 			<div className={`${basedStyles.body} ${styles.body}`}>
 				<div className={basedStyles.wrapper}>

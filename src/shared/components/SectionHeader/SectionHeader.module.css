@@ -10,3 +10,16 @@
 	display: flex;
 	gap: 12px;
 }
+
+@media screen and (max-width: 675px) {
+	.header {
+		align-items: center;
+		gap: 8px;
+		flex-direction: column;
+	}
+
+	.container_buttons {
+		justify-content: center;
+		gap: 8px;
+	}
+}

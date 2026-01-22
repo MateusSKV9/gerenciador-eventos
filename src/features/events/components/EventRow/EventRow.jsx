@@ -58,7 +58,7 @@ export function EventRow({
 						</div>
 					</div>
 				</div>
-				<p className={`${basedStyles.description} ${styles.description}`}>{description}</p>
+				{description && <p className={`${basedStyles.description} ${styles.description}`}>{description}</p>}
 			</div>
 
 			{!daysRemaining && <progress value={daysElapsed} min="00" max="100" className={basedStyles.progress} />}

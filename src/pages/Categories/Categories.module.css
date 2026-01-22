@@ -3,3 +3,10 @@
 	grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
 	gap: 30px;
 }
+
+@media screen and (max-width: 675px) {
+	.container_categories {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}
