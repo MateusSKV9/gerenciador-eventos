@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import { Button } from "../../shared/components/Button/Button";
-import styles from "./Events.module.css";
 import { CreateEventModal } from "../../features/events/components/CreateEventModal/CreateEventModal";
 import { useEvents } from "../../hooks/useEvents";
 import { SectionHeader } from "../../shared/components/SectionHeader/SectionHeader";
 import { getDaysElapsed, getDaysRemaining } from "../../utils/date";
 import { EventBase } from "../../features/events/components/EventBase/EventBase";
 import basedStyles from "./../../features/events/components/EventBase/EventBase.module.css";
+import styles from "./Events.module.css";
 
 const SORTERS = {
 	remainingAsc: {

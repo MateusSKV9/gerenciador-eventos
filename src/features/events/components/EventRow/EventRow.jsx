@@ -1,8 +1,7 @@
-import styles from "./EventRow.module.css";
 import { CategoryBagde } from "../../../categories/components/CategoryBagde/CategoryBagde";
 import { ItemMenu } from "../../../../shared/components/ItemMenu/ItemMenu";
-
 import basedStyles from "./../EventBase/EventBase.module.css";
+import styles from "./EventRow.module.css";
 
 export function EventRow({
 	id,
@@ -25,8 +24,8 @@ export function EventRow({
 	return (
 		<article className={`${basedStyles.event} ${styles.event} ${daysRemaining <= 0 && basedStyles.event_expired}`}>
 			<div className={styles.wrapper_content}>
-				<header className={basedStyles.header}>
-					<div className={basedStyles.wrapper_col}>
+				<header className={`${basedStyles.header} ${styles.header}`}>
+					<div className={`${basedStyles.wrapper_col} ${styles.wrapper_col}`}>
 						<h3 className={basedStyles.name}>{name}</h3>
 						{categoryId && <CategoryBagde id={categoryId} />}
 					</div>

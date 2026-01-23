@@ -1,8 +1,7 @@
 import { ItemMenu } from "../../../../shared/components/ItemMenu/ItemMenu";
 import { CategoryBagde } from "../../../categories/components/CategoryBagde/CategoryBagde";
-import styles from "./EventCard.module.css";
-
 import basedStyles from "./../EventBase/EventBase.module.css";
+import styles from "./EventCard.module.css";
 
 export function EventCard({
 	id,
