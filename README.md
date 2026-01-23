@@ -1,7 +1,11 @@
-<h1 align="center">📅 Gerenciador de Eventos 📅</h1>
+<h1 align="center" >📅 Gerenciador de Eventos 📅</h1>
 
-<img src="preview.png" alt="Imagem do projeto" />
+<!-- <img src="preview.png" alt="Imagem do projeto" style="border: 1px solid #ccc; display: inline-block;" /> -->
+<div style="border: 1px solid #ccc; display: inline-block;">
+  <img src="preview.png" alt="Imagem do projeto" width="100%">
+</div>
 
+## ℹ️ Sobre
 Este projeto é uma **aplicação web desenvolvida em React** para **criação e gerenciamento de eventos**.  
 O objetivo foi construir uma solução prática para organização de compromissos e datas importantes, ao mesmo tempo em que foram aplicados conceitos avançados do **ecossistema React**, incluindo arquitetura por features, Context API, hooks personalizados e otimizações de performance.
 
