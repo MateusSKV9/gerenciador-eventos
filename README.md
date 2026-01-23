@@ -5,6 +5,9 @@
 Este projeto é uma **aplicação web desenvolvida em React** para **criação e gerenciamento de eventos**.  
 O objetivo foi construir uma solução prática para organização de compromissos e datas importantes, ao mesmo tempo em que foram aplicados conceitos avançados do **ecossistema React**, incluindo arquitetura por features, Context API, hooks personalizados e otimizações de performance.
 
+
+#### 📍 Acesse o link: https://gerenciador-eventos-swart.vercel.app/
+
 ---
 
 ## 📋 Funcionalidades
