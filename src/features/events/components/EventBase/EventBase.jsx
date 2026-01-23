@@ -33,23 +33,30 @@ export function EventBase({
 	const getDurationText = () => {
 		if (viewType === "week") {
 			const weeks = Math.floor(Math.abs(daysRemaining) / 7);
-			const remainingDays = daysRemaining % 7;
-			return `${daysRemaining < 0 ? "Há" : ""} ${weeks} Sem., ${
-				daysRemaining < 0 ? Math.abs(remainingDays) : remainingDays
-			} ${Math.abs(remainingDays) != 1 ? "dias" : "dia"}`;
+			const remainingDays = Math.abs(daysRemaining) % 7;
+
+			const isNotOne = Math.abs(remainingDays) != 1;
+			const isNegative = daysRemaining < 0;
+
+			return `${isNegative ? "Há" : ""} ${weeks} Sem., ${remainingDays} ${isNotOne ? "dias" : "dia"}`;
 		}
 
 		if (viewType === "month") {
 			const months = Math.floor(Math.abs(daysRemaining) / 30);
-			const remainingDays = daysRemaining % 30;
-			return `${daysRemaining < 0 ? "Há" : ""} ${months} ${months != 1 ? "Meses" : "Mês"},  ${
-				daysRemaining < 0 ? Math.abs(remainingDays) : remainingDays
-			} ${Math.abs(remainingDays) != 1 ? "dias" : "dia"}`;
+			const remainingDays = Math.abs(daysRemaining) % 30;
+
+			const isNotOne = Math.abs(remainingDays) != 1;
+			const isNegative = daysRemaining < 0;
+
+			return `${isNegative ? "Há" : ""} ${months} ${months != 1 ? "Meses" : "Mês"},  ${remainingDays} ${
+				isNotOne ? "dias" : "dia"
+			}`;
 		}
 
-		return `${daysRemaining < 0 ? "Há" : ""} ${daysRemaining ? Math.abs(daysRemaining) : daysRemaining} ${
-			Math.abs(daysRemaining) != 1 ? "dias" : "dia"
-		} `;
+		const isNotOne = Math.abs(daysRemaining) != 1;
+		const isNegative = daysRemaining < 0;
+
+		return `${isNegative ? "Há" : ""} ${Math.abs(daysRemaining)} ${isNotOne ? "dias" : "dia"} `;
 	};
 
 	const handleChange = (e) => setViewType(e.target.value);

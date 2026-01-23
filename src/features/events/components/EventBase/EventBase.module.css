@@ -177,9 +177,6 @@
 	.wrapper {
 		flex-direction: column;
 		align-items: stretch;
-
-		& > * {
-		}
 	}
 
 	.wrapper_col {
