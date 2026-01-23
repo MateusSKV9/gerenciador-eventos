@@ -7,7 +7,7 @@ export function Header() {
 	return (
 		<header className={styles.header}>
 			<Link className={styles.logo} to="/">
-				<h2>Gerenciador de Tarefas</h2>
+				<h2>Gerenciador de Eventos</h2>
 			</Link>
 
 			<nav className={styles.nav}>
