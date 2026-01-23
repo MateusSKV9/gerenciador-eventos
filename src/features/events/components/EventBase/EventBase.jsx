@@ -17,8 +17,9 @@ export function EventBase({
 	isMenuOpen,
 	toggleMenu,
 	closeMenu,
+	showModal,
 }) {
-	const { deleteEvent, showModal } = useEvents();
+	const { deleteEvent } = useEvents();
 	const menuRef = useRef(null);
 	const [viewType, setViewType] = useState("days");
 	const [, setSearchParams] = useSearchParams();

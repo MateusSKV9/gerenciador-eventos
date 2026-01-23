@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "../../shared/components/Button/Button";
 import { CreateEventModal } from "../../features/events/components/CreateEventModal/CreateEventModal";
 import { useEvents } from "../../hooks/useEvents";
@@ -7,6 +7,7 @@ import { getDaysElapsed, getDaysRemaining } from "../../utils/date";
 import { EventBase } from "../../features/events/components/EventBase/EventBase";
 import basedStyles from "./../../features/events/components/EventBase/EventBase.module.css";
 import styles from "./Events.module.css";
+import { useModal } from "../../hooks/useModal";
 
 const SORTERS = {
 	remainingAsc: {
@@ -28,9 +29,10 @@ const SORTERS = {
 };
 
 export function Events() {
-	const { events, isCreateModalOpen, showModal, closeModal } = useEvents();
+	const { events } = useEvents();
+	const { isCreateModalOpen, showModal, closeModal } = useModal();
 	const [openMenuId, setOpenMenuId] = useState(null);
-	const [typeDisplay, setTypeDisplay] = useState("card");
+	const [typeDisplay, setTypeDisplay] = useState(localStorage.getItem("typeDisplay") || "card");
 	const [sortKey, setSortKey] = useState("remainingAsc");
 
 	const CONTAINER_STYLE = {
@@ -47,6 +49,10 @@ export function Events() {
 
 		return [...events].sort((a, b) => sorter.compare(a, b, getDaysRemaining));
 	}, [events, sortKey]);
+
+	useEffect(() => {
+		localStorage.setItem("typeDisplay", typeDisplay);
+	}, [typeDisplay]);
 
 	return (
 		<section>
@@ -96,6 +102,7 @@ export function Events() {
 								isMenuOpen={openMenuId === event.id}
 								toggleMenu={() => setOpenMenuId((prev) => (prev === event.id ? null : event.id))}
 								closeMenu={() => setOpenMenuId(null)}
+								showModal={showModal}
 							/>
 						);
 					})
