@@ -4,27 +4,27 @@ import { EventContext } from "../hooks/useEvents";
 const initialEvents = [
 	{
 		id: "1",
-		name: "Evento1",
+		name: "Evento Importante",
 		categoryId: "1",
-		description: "blabla",
+		description: "Este é um evento importante.",
 		creationDate: "2026-01-18",
 		expirationDate: "2026-01-21",
 	},
 	{
 		id: "2",
-		name: "Evento2",
+		name: "Desenvolver Lading Page",
 		categoryId: "2",
-		description: "blabla",
+		description: "Em React.",
 		creationDate: "2026-01-19",
 		expirationDate: "2026-02-01",
 	},
 	{
 		id: "3",
-		name: "Evento3",
+		name: "Aniversário de React",
 		categoryId: "3",
-		description: "blabla",
+		description: "Hello, World!",
 		creationDate: "2026-01-01",
-		expirationDate: "2027-03-12",
+		expirationDate: "2026-06-01",
 	},
 ];
 
