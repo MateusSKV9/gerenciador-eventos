@@ -29,6 +29,13 @@ O objetivo foi construir uma solução prática para organização de compromiss
 
 - **Exclusão de eventos:** remoção de eventos já cadastrados.
 
+- **Visualização inteligente de tempo por evento:**
+  - Exibição de tempo restante em **dias, semanas ou meses**
+  - Alternância dinâmica da unidade de tempo por card
+  - **Barra de progresso visual** baseada no tempo decorrido
+  - **Cores dinâmicas** na barra conforme o nível de urgência (verde, amarelo, vermelho)
+
+
 - **Gerenciamento de categorias:**
 
   - Criação de categorias
