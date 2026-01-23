@@ -21,6 +21,12 @@ export function EventRow({
 	getDurationText,
 	displayDate,
 }) {
+	const styleProgress = () => {
+		if (daysElapsed < 30) return basedStyles.red;
+		if (daysElapsed < 60) return basedStyles.yellow;
+		return basedStyles.green;
+	};
+
 	return (
 		<article className={`${basedStyles.event} ${styles.event} ${daysRemaining <= 0 && basedStyles.event_expired}`}>
 			<div className={styles.wrapper_content}>
@@ -60,7 +66,9 @@ export function EventRow({
 				{description && <p className={`${basedStyles.description} ${styles.description}`}>{description}</p>}
 			</div>
 
-			{!daysRemaining && <progress value={daysElapsed} min="00" max="100" className={basedStyles.progress} />}
+			{daysRemaining > 0 && (
+				<progress value={daysElapsed} min="00" max="100" className={`${basedStyles.progress} ${styleProgress()}`} />
+			)}
 
 			{daysRemaining <= 0 && <div className={`${basedStyles.expired} ${styles.expired}`}>Expirado</div>}
 

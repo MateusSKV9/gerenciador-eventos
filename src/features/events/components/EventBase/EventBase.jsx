@@ -32,18 +32,24 @@ export function EventBase({
 
 	const getDurationText = () => {
 		if (viewType === "week") {
-			const weeks = Math.floor(daysRemaining / 7);
+			const weeks = Math.floor(Math.abs(daysRemaining) / 7);
 			const remainingDays = daysRemaining % 7;
-			return `${weeks} ${weeks > 1 ? "Sem." : "Sem."}, ${remainingDays} ${remainingDays > 1 ? "dias" : "dia"}`;
+			return `${daysRemaining < 0 ? "Há" : ""} ${weeks} Sem., ${
+				daysRemaining < 0 ? Math.abs(remainingDays) : remainingDays
+			} ${Math.abs(remainingDays) != 1 ? "dias" : "dia"}`;
 		}
 
 		if (viewType === "month") {
-			const months = Math.floor(daysRemaining / 30);
+			const months = Math.floor(Math.abs(daysRemaining) / 30);
 			const remainingDays = daysRemaining % 30;
-			return `${months} ${months != 1 ? "Meses" : "Mês"},  ${remainingDays} ${remainingDays > 1 ? "dias" : "dia"}`;
+			return `${daysRemaining < 0 ? "Há" : ""} ${months} ${months != 1 ? "Meses" : "Mês"},  ${
+				daysRemaining < 0 ? Math.abs(remainingDays) : remainingDays
+			} ${Math.abs(remainingDays) != 1 ? "dias" : "dia"}`;
 		}
 
-		return `${daysRemaining} ${daysRemaining > 1 ? "dias" : "dia"} `;
+		return `${daysRemaining < 0 ? "Há" : ""} ${daysRemaining ? Math.abs(daysRemaining) : daysRemaining} ${
+			Math.abs(daysRemaining) != 1 ? "dias" : "dia"
+		} `;
 	};
 
 	const handleChange = (e) => setViewType(e.target.value);

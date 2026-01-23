@@ -21,6 +21,12 @@ export function EventCard({
 	getDurationText,
 	displayDate,
 }) {
+	const styleProgress = () => {
+		if (daysElapsed < 30) return basedStyles.red;
+		if (daysElapsed < 60) return basedStyles.yellow;
+		return basedStyles.green;
+	};
+
 	return (
 		<article className={`${basedStyles.event} ${styles.event} ${daysRemaining <= 0 && basedStyles.event_expired}`}>
 			<header className={basedStyles.header}>
@@ -83,9 +89,9 @@ export function EventCard({
 						</svg>
 					</div>
 				</div>
-				<progress value={daysElapsed} min="00" max="100" className={basedStyles.progress} />
+				{daysRemaining > 0 && <progress value={daysElapsed} min="00" max="100" className={`${basedStyles.progress} ${styleProgress()}`} />}
 			</div>
-			{daysRemaining <= 0 && <div className={basedStyles.expired}>Expirado</div>}
+			{daysRemaining <= 0 && <div className={`${basedStyles.expired}`}>Expirado</div>}
 		</article>
 	);
 }

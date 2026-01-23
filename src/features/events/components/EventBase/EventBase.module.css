@@ -104,7 +104,7 @@
 	background-color: var(--black);
 	color: var(--white);
 	width: 100%;
-	margin-right: 16px;
+	margin-right: 22px;
 }
 
 .select_icon {
@@ -130,6 +130,22 @@
 
 	&::-webkit-progress-value {
 		background: #00e479;
+	}
+}
+
+.progress.green {
+	&::-webkit-progress-value {
+		background: #00e479;
+	}
+}
+.progress.yellow {
+	&::-webkit-progress-value {
+		background: #dce400;
+	}
+}
+.progress.red {
+	&::-webkit-progress-value {
+		background: #e40000;
 	}
 }
 
