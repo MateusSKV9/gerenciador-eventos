@@ -31,7 +31,7 @@ export function EventCard({
 		<article className={`${basedStyles.event} ${styles.event} ${daysRemaining <= 0 && basedStyles.event_expired}`}>
 			<header className={basedStyles.header}>
 				<div className={basedStyles.wrapper_col}>
-					<h3 className={basedStyles.name}>{name}</h3>
+					<h2 className={basedStyles.name}>{name}</h2>
 					{categoryId && <CategoryBagde id={categoryId} />}
 				</div>
 				<button
@@ -41,6 +41,7 @@ export function EventCard({
 						toggleMenu();
 					}}
 					type="button"
+					title="Opções"
 				>
 					<svg className={basedStyles.icon_menu} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width={22}>
 						<path
@@ -75,6 +76,7 @@ export function EventCard({
 							className={basedStyles.durationType}
 							name="durationType"
 							id={`durationType_${id}`}
+							title="Tipo de duração"
 						>
 							<option value="days">Dias</option>
 							<option value="week">Sem.</option>
@@ -89,7 +91,9 @@ export function EventCard({
 						</svg>
 					</div>
 				</div>
-				{daysRemaining > 0 && <progress value={daysElapsed} min="00" max="100" className={`${basedStyles.progress} ${styleProgress()}`} />}
+				{daysRemaining > 0 && (
+					<progress value={daysElapsed} min="00" max="100" className={`${basedStyles.progress} ${styleProgress()}`} />
+				)}
 			</div>
 			{daysRemaining <= 0 && <div className={`${basedStyles.expired}`}>Expirado</div>}
 		</article>

@@ -32,7 +32,7 @@ export function EventRow({
 			<div className={styles.wrapper_content}>
 				<header className={`${basedStyles.header} ${styles.header}`}>
 					<div className={`${basedStyles.wrapper_col} ${styles.wrapper_col}`}>
-						<h3 className={basedStyles.name}>{name}</h3>
+						<h2 className={basedStyles.name}>{name}</h2>
 						{categoryId && <CategoryBagde id={categoryId} />}
 					</div>
 				</header>
@@ -49,6 +49,7 @@ export function EventRow({
 								className={basedStyles.durationType}
 								name="durationType"
 								id={`durationType_${id}`}
+								title="Tipo de duração"
 							>
 								<option value="days">Dias</option>
 								<option value="week">Sem.</option>
@@ -82,6 +83,7 @@ export function EventRow({
 						toggleMenu();
 					}}
 					type="button"
+					title="Opções"
 				>
 					<svg className={basedStyles.icon_menu} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
 						<path

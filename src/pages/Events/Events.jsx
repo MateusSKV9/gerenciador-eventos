@@ -69,6 +69,7 @@ export function Events() {
 						id="sortKey"
 						onChange={(e) => setSortKey(e.target.value)}
 						className={`${styles.sortSelect}`}
+						title="Filtro"
 					>
 						<option className={styles.option} value="">
 							Sem ordenação
