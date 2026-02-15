@@ -32,3 +32,17 @@
 .wrapper > * {
 	flex-grow: 1;
 }
+
+.error {
+	color: red;
+}
+
+.container_textarea {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+
+	& > * {
+		width: 100%;
+	}
+}

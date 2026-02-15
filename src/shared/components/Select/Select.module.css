@@ -3,6 +3,7 @@
 	flex-direction: column;
 	gap: 4px;
 	overflow: hidden;
+	margin-bottom: auto;
 }
 
 .label {

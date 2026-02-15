@@ -1,12 +1,13 @@
+import { forwardRef } from "react";
 import styles from "./Select.module.css";
 
-export function Select({ label, id, value, name, options, handleChange }) {
+export const Select = forwardRef(({ label, options, ...props }, ref) => {
 	return (
 		<div className={styles.select_group}>
-			<label className={styles.label} htmlFor={id}>
+			<label className={styles.label} htmlFor={props.id}>
 				{label}
 			</label>
-			<select value={value} onChange={handleChange} className={styles.select} name={name} id={id}>
+			<select ref={ref} className={styles.select} {...props}>
 				<option value="">Selecione uma opção</option>
 				{options.map((option) => (
 					<option key={option.id} value={option.id}>
@@ -16,4 +17,4 @@ export function Select({ label, id, value, name, options, handleChange }) {
 			</select>
 		</div>
 	);
-}
+});

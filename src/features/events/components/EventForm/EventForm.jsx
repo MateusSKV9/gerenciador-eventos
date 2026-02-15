@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useCategories } from "../../../../hooks/useCategories";
 import { useEvents } from "../../../../hooks/useEvents";
 import { Form } from "../../../../shared/components/Form/Form";
@@ -8,75 +7,70 @@ import styles from "./EventForm.module.css";
 import { format } from "date-fns";
 import { SubmitButton } from "../../../../shared/components/SubmitButton/SubmitButton";
 
+import { useForm } from "react-hook-form";
+
 export function EventForm({ close, eventData, textSubmitButton }) {
 	const { createEvent, updateEvent } = useEvents();
 	const { categories } = useCategories();
 
-	const [event, setEvent] = useState(eventData || {});
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+	} = useForm({ defaultValues: eventData || {} });
 
-	const handleSubmit = (e) => {
+	const handleOnSubmit = (data) => {
 		try {
-			e.preventDefault();
-
-			if (event.id) {
-				updateEvent(event);
+			if (eventData.id) {
+				updateEvent(data);
 			} else {
-				createEvent({ id: crypto.randomUUID(), creationDate: format(new Date(), "yyyy-MM-dd"), ...event });
+				createEvent({ id: crypto.randomUUID(), creationDate: format(new Date(), "yyyy-MM-dd"), ...data });
 			}
-
 			close();
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
-	const handleChange = (e) => {
-		setEvent((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-	};
-
 	return (
-		<Form handleSubmit={handleSubmit}>
+		<Form handleSubmit={handleSubmit(handleOnSubmit)}>
 			<Input
-				handleChange={handleChange}
-				value={event.name ? event.name : ""}
 				id="name"
-				label="Nome do evento"
-				name="name"
-				placeholder="Digite o nome do evento"
 				type="text"
+				label="Nome do evento"
+				placeholder="Digite o nome do evento"
+				error={errors.name?.message}
+				{...register("name", { required: "Nome é obrigatório" })}
 			/>
 
 			<div className={styles.wrapper}>
 				<Input
-					handleChange={handleChange}
-					value={event.expirationDate ? event.expirationDate : ""}
 					id="expirationDate"
 					label="Data da evento"
-					name="expirationDate"
 					type="date"
+					error={errors.expirationDate?.message}
+					{...register("expirationDate", { required: "Data de experição obrigatória" })}
 				/>
-				<Select
-					handleChange={handleChange}
-					value={event.categoryId ? event.categoryId : ""}
-					label="Categoria"
-					id="categoryId"
-					name="categoryId"
-					options={categories}
-				/>
+				<Select id="categoryId" label="Categoria" options={categories} {...register("categoryId")} />
 			</div>
 			<div className={styles.textarea_group}>
 				<label className={styles.label} htmlFor="description">
 					Descrição
 				</label>
-				<textarea
-					value={event.description ? event.description : ""}
-					onChange={handleChange}
-					className={styles.textarea}
-					placeholder="Digite alguma anotação ou observação (opcional)"
-					name="description"
-					id="description"
-					maxLength={150}
-				></textarea>
+				<div className={styles.container_textarea}>
+					<textarea
+						id="description"
+						className={styles.textarea}
+						placeholder="Digite alguma anotação ou observação (opcional)"
+						{...register("description", { maxLength: { value: 150, message: "Máximo de 150 caracteres" } })}
+					></textarea>
+					{errors.description && (
+						<span>
+							<span className={styles.error}>*</span>
+							{errors.description?.message}
+						</span>
+					)}
+				</div>
 			</div>
 			<SubmitButton text={textSubmitButton} />
 		</Form>

@@ -5,9 +5,14 @@ import { CategoryForm } from "../CategoryForm/CategoryForm";
 
 export function CreateCategoryModal({ closeModal }) {
 	const { getCategory } = useCategories();
-	const [searchParams] = useSearchParams();
+	const [searchParams, setSearchParamns] = useSearchParams();
 	const id = searchParams.get("category");
 	const categoryData = id ? getCategory(id) : { name: "", color: "#000000" };
+
+	const handleClose = () => {
+		closeModal();
+		setSearchParamns({});
+	};
 
 	return (
 		<CreateModal close={closeModal}>
@@ -15,7 +20,7 @@ export function CreateCategoryModal({ closeModal }) {
 				key={id || "new"}
 				categoryData={categoryData}
 				textSubmitButton={`${id ? "Salvar" : "Criar"}`}
-				closeModal={closeModal}
+				closeModal={handleClose}
 			/>
 		</CreateModal>
 	);
