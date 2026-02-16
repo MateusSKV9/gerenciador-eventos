@@ -7,6 +7,7 @@ export const Select = forwardRef(({ label, options, ...props }, ref) => {
 			<label className={styles.label} htmlFor={props.id}>
 				{label}
 			</label>
+
 			<select ref={ref} className={styles.select} {...props}>
 				<option value="">Selecione uma opção</option>
 				{options.map((option) => (

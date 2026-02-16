@@ -8,6 +8,8 @@ import { format } from "date-fns";
 import { SubmitButton } from "../../../../shared/components/SubmitButton/SubmitButton";
 
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { EventSchema } from "../../../../schemas/eventSchema";
 
 export function EventForm({ close, eventData, textSubmitButton }) {
 	const { createEvent, updateEvent } = useEvents();
@@ -17,14 +19,18 @@ export function EventForm({ close, eventData, textSubmitButton }) {
 		register,
 		formState: { errors },
 		handleSubmit,
-	} = useForm({ defaultValues: eventData || {} });
+	} = useForm({ resolver: zodResolver(EventSchema), defaultValues: eventData || {} });
 
 	const handleOnSubmit = (data) => {
 		try {
-			if (eventData.id) {
-				updateEvent(data);
+			if (eventData?.id) {
+				updateEvent({ id: eventData.id, ...eventData, ...data });
 			} else {
-				createEvent({ id: crypto.randomUUID(), creationDate: format(new Date(), "yyyy-MM-dd"), ...data });
+				createEvent({
+					id: crypto.randomUUID(),
+					creationDate: format(new Date(), "yyyy-MM-dd"),
+					...data,
+				});
 			}
 			close();
 		} catch (error) {
@@ -40,7 +46,7 @@ export function EventForm({ close, eventData, textSubmitButton }) {
 				label="Nome do evento"
 				placeholder="Digite o nome do evento"
 				error={errors.name?.message}
-				{...register("name", { required: "Nome é obrigatório" })}
+				{...register("name")}
 			/>
 
 			<div className={styles.wrapper}>
@@ -49,10 +55,11 @@ export function EventForm({ close, eventData, textSubmitButton }) {
 					label="Data da evento"
 					type="date"
 					error={errors.expirationDate?.message}
-					{...register("expirationDate", { required: "Data de experição obrigatória" })}
+					{...register("expirationDate")}
 				/>
 				<Select id="categoryId" label="Categoria" options={categories} {...register("categoryId")} />
 			</div>
+
 			<div className={styles.textarea_group}>
 				<label className={styles.label} htmlFor="description">
 					Descrição
@@ -62,7 +69,7 @@ export function EventForm({ close, eventData, textSubmitButton }) {
 						id="description"
 						className={styles.textarea}
 						placeholder="Digite alguma anotação ou observação (opcional)"
-						{...register("description", { maxLength: { value: 150, message: "Máximo de 150 caracteres" } })}
+						{...register("description")}
 					></textarea>
 					{errors.description && (
 						<span>
