@@ -65,7 +65,7 @@ O objetivo foi construir uma solução prática para organização de compromiss
 
 ## 🛠️ Requisitos Técnicos
 
-- **Validação básica de formulários:** prevenção de campos inválidos.
+- **Validação robusta de formulários com schema**
 - **Responsividade:** layout adaptado para diferentes tamanhos de tela.
 - **Cálculo dinâmico de datas:** lógica isolada em funções utilitárias.
 - **Estado global:** gerenciamento centralizado via Context API.
@@ -117,6 +117,18 @@ O objetivo foi construir uma solução prática para organização de compromiss
 
 ---
 
+### 🧾 Validação de Formulários
+- **`React Hook Form`** para gerenciamento performático e otimizado de formulários
+- **`Zod`** para validação declarativa e segura baseada em schema
+- **Benefícios:**
+
+  - Validação tipada e centralizada
+  - Mensagens de erro controladas
+  - Melhor performance (menos re-renderizações)
+  - Código mais previsível e escalável
+
+---
+
 ## 🌐 Gerenciamento de Estado Global
 
 - **Context API** utilizada para:
@@ -158,10 +170,13 @@ src
 ```
 
 ## 🚀 Tecnologias Utilizadas
-
-- **React** (Hooks, Context API, React Router)
-- **JavaScript (ES6+)**
+- **React** (Hooks, Context API)
+- **React Hook Form**
+- **Zod**
+- **React Router DOM**
+- **TypeScript**
 - **CSS Modules**
+- **date-fns**
 - **Vite**
 - **LocalStorage**
 
