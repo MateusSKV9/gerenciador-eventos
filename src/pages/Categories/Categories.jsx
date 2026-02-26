@@ -7,7 +7,7 @@ import { useModal } from "../../hooks/useModal";
 import { useState } from "react";
 import { CreateCategoryModal } from "../../features/categories/components/CreateCategoryModal/CreateCategoryModal";
 
-export function Categories() {
+export default function Categories() {
 	const { isCreateModalOpen, showModal, closeModal } = useModal();
 	const { categories } = useCategories();
 	const [isMenuOpen, setIsMenuOpen] = useState(null);

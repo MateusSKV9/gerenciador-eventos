@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router";
 import { useEvents } from "../../../../hooks/useEvents";
 import { CreateModal } from "../../../../shared/components/CreateModal/CreateModal";
 
-export function CreateEventModal({ close }) {
+export default function CreateEventModal({ close }) {
 	const { getEvent } = useEvents();
 	const [searchParamns, setSearchParamns] = useSearchParams();
 	const id = searchParamns.get("event");

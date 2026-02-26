@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Button } from "../../shared/components/Button/Button";
-import { CreateEventModal } from "../../features/events/components/CreateEventModal/CreateEventModal";
 import { useEvents } from "../../hooks/useEvents";
 import { SectionHeader } from "../../shared/components/SectionHeader/SectionHeader";
 import { getDaysElapsed, getDaysRemaining } from "../../utils/date";
@@ -8,6 +7,8 @@ import { EventBase } from "../../features/events/components/EventBase/EventBase"
 import basedStyles from "./../../features/events/components/EventBase/EventBase.module.css";
 import styles from "./Events.module.css";
 import { useModal } from "../../hooks/useModal";
+
+const CreateEventModal = lazy(() => import("../../features/events/components/CreateEventModal/CreateEventModal"));
 
 const SORTERS = {
 	remainingAsc: {
@@ -112,7 +113,11 @@ export function Events() {
 				)}
 			</div>
 
-			{isCreateModalOpen && <CreateEventModal close={closeModal} />}
+			{isCreateModalOpen && (
+				<Suspense fallback={<p>Carregando modal...</p>}>
+					<CreateEventModal close={closeModal} />
+				</Suspense>
+			)}
 		</section>
 	);
 }
