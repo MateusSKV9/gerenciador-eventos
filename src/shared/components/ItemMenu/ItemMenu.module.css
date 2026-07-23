@@ -41,6 +41,10 @@
 	background-color: (--secondary);
 	color: var(--black);
 
+	display: flex;
+	align-items: center;
+	gap: 4px;
+
 	&:hover {
 		background-color: var(--black);
 		color: var(--highlight);

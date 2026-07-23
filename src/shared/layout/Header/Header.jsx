@@ -7,7 +7,7 @@ export function Header() {
 	return (
 		<header className={styles.header}>
 			<Link className={styles.logo} to="/">
-				<span className={styles.logo_text}>Gerenciador de Eventos</span>
+				<span className={styles.logo_text}>🗓️ Gerenciador de Eventos</span>
 			</Link>
 
 			<nav className={styles.nav}>
