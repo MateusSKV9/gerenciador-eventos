@@ -1,8 +1,8 @@
-import { EventForm } from "../EventForm/EventForm";
 import { useEffect } from "react";
+import { EventForm } from "../EventForm/EventForm";
 import { useSearchParams } from "react-router";
-import { useEvents } from "../../../../hooks/useEvents";
-import { CreateModal } from "../../../../shared/components/CreateModal/CreateModal";
+import { CreateModal } from "../../../../shared";
+import { useEvents } from "../../../../hooks";
 
 export function CreateEventModal({ close }) {
 	const { getEvent } = useEvents();

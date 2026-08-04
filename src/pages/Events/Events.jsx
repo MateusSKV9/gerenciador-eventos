@@ -1,12 +1,10 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
-import { Button } from "../../shared/components/Button/Button";
-import { useEvents } from "../../hooks/useEvents";
-import { SectionHeader } from "../../shared/components/SectionHeader/SectionHeader";
+import { Button, SectionHeader } from "../../shared";
+import { useEvents, useModal } from "../../hooks";
 import { getDaysElapsed, getDaysRemaining } from "../../utils/date";
-import { EventBase } from "../../features/events/components/EventBase/EventBase";
+import { EventBase } from "../../features/events";
 import basedStyles from "./../../features/events/components/EventBase/EventBase.module.css";
 import styles from "./Events.module.css";
-import { useModal } from "../../hooks/useModal";
 
 const CreateEventModal = lazy(() => import("../../features/events/components/CreateEventModal/CreateEventModal"));
 
