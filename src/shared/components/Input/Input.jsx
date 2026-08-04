@@ -1,7 +1,6 @@
-import { forwardRef } from "react";
 import styles from "./Input.module.css";
 
-export const Input = forwardRef(({ label, error, ...props }, ref) => {
+export function Input({ label, error, ref, ...props }) {
 	return (
 		<div className={styles.input_group}>
 			<label className={styles.label} htmlFor={props.id}>
@@ -16,4 +15,4 @@ export const Input = forwardRef(({ label, error, ...props }, ref) => {
 			)}
 		</div>
 	);
-});
+}

@@ -1,7 +1,6 @@
-import { forwardRef } from "react";
 import styles from "./Select.module.css";
 
-export const Select = forwardRef(({ label, options, ...props }, ref) => {
+export function Select({ label, options, ref, ...props }) {
 	return (
 		<div className={styles.select_group}>
 			<label className={styles.label} htmlFor={props.id}>
@@ -18,4 +17,4 @@ export const Select = forwardRef(({ label, options, ...props }, ref) => {
 			</select>
 		</div>
 	);
-});
+}
