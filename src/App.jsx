@@ -8,7 +8,7 @@ import { lazy, Suspense } from "react";
 
 const Categories = lazy(() => import("./pages/Categories/Categories"));
 
-function App() {
+export default function App() {
 	return (
 		<>
 			<Header />
@@ -26,5 +26,3 @@ function App() {
 		</>
 	);
 }
-
-export default App;

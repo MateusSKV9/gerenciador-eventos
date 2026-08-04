@@ -4,10 +4,10 @@ import { useSearchParams } from "react-router";
 import { useEvents } from "../../../../hooks/useEvents";
 import { CreateModal } from "../../../../shared/components/CreateModal/CreateModal";
 
-export default function CreateEventModal({ close }) {
+export function CreateEventModal({ close }) {
 	const { getEvent } = useEvents();
-	const [searchParamns, setSearchParamns] = useSearchParams();
-	const id = searchParamns.get("event");
+	const [searchParams, setSearchParams] = useSearchParams();
+	const id = searchParams.get("event");
 	const eventData = id ? getEvent(id) : {};
 
 	useEffect(() => {
@@ -19,7 +19,7 @@ export default function CreateEventModal({ close }) {
 
 	const handleClose = () => {
 		close();
-		setSearchParamns({});
+		setSearchParams({});
 	};
 
 	return (

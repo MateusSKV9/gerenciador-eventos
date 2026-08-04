@@ -1,11 +1,11 @@
 import { createPortal } from "react-dom";
-import styles from "./CreateModal.module.css";
 import { useSearchParams } from "react-router";
 import { useEffect } from "react";
+import styles from "./CreateModal.module.css";
 
 export function CreateModal({ close, children }) {
-	const [searchParamns, setSearchParamns] = useSearchParams();
-	const id = searchParamns.get("event")?.toLowerCase();
+	const [searchParams, setSearchParams] = useSearchParams();
+	const id = searchParams.get("event")?.toLowerCase();
 
 	useEffect(() => {
 		document.body.style.overflow = "hidden";
@@ -17,7 +17,7 @@ export function CreateModal({ close, children }) {
 
 	const handleClose = () => {
 		close();
-		setSearchParamns({});
+		setSearchParams({});
 	};
 
 	return createPortal(

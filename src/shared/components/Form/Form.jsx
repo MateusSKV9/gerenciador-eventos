@@ -1,8 +1,8 @@
 import styles from "./Form.module.css";
 
-export function Form({ children, handleSubmit }) {
+export function Form({ children, onSubmit }) {
 	return (
-		<form onSubmit={handleSubmit} className={styles.form} autoComplete="false">
+		<form onSubmit={onSubmit} className={styles.form} autoComplete="false">
 			{children}
 		</form>
 	);
