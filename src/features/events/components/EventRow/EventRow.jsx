@@ -1,4 +1,4 @@
-import { CategoryBagde } from "../../../categories/components/CategoryBagde/CategoryBagde";
+import { CategoryBadge } from "../../../categories/components/CategoryBadge/CategoryBadge";
 import { ItemMenu } from "../../../../shared/components/ItemMenu/ItemMenu";
 import basedStyles from "./../EventBase/EventBase.module.css";
 import styles from "./EventRow.module.css";
@@ -33,7 +33,7 @@ export function EventRow({
 				<header className={`${basedStyles.header} ${styles.header}`}>
 					<div className={`${basedStyles.wrapper_col} ${styles.wrapper_col}`}>
 						<h2 className={basedStyles.name}>{name}</h2>
-						{categoryId && <CategoryBagde id={categoryId} />}
+						{categoryId && <CategoryBadge id={categoryId} />}
 					</div>
 				</header>
 				<div className={`${basedStyles.body} ${styles.body}`}>

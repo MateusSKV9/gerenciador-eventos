@@ -1,5 +1,5 @@
 import { ItemMenu } from "../../../../shared/components/ItemMenu/ItemMenu";
-import { CategoryBagde } from "../../../categories/components/CategoryBagde/CategoryBagde";
+import { CategoryBadge } from "../../../categories";
 import basedStyles from "./../EventBase/EventBase.module.css";
 import styles from "./EventCard.module.css";
 
@@ -32,7 +32,7 @@ export function EventCard({
 			<header className={basedStyles.header}>
 				<div className={basedStyles.wrapper_col}>
 					<h2 className={basedStyles.name}>{name}</h2>
-					{categoryId && <CategoryBagde id={categoryId} />}
+					{categoryId && <CategoryBadge id={categoryId} />}
 				</div>
 				<button
 					className={`${basedStyles.button_menu} ${isMenuOpen && basedStyles.active}`}

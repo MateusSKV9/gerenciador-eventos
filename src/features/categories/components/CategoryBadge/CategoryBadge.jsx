@@ -1,7 +1,7 @@
-import { useCategories } from "../../../../hooks/useCategories";
-import styles from "./CategoryBagde.module.css";
+import { useCategories } from "../../../../hooks";
+import styles from "./CategoryBadge.module.css";
 
-export function CategoryBagde({ id }) {
+export function CategoryBadge({ id }) {
 	const { getCategory } = useCategories();
 	const category = getCategory(id);
 
