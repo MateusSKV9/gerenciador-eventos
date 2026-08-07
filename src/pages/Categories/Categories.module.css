@@ -4,7 +4,7 @@
 	gap: 30px;
 }
 
-@media screen and (max-width: 675px) {
+@media (max-width: 675px) {
 	.container_categories {
 		grid-template-columns: 1fr;
 		gap: 20px;

@@ -1,5 +1,4 @@
-import React from "react";
-import { ICONS, IconType, SvgProps } from "../../../icons/icons";
+import { type IconType, type SvgProps, ICONS } from "@/icons/icons";
 
 type IconProps = {
 	variant: IconType;

@@ -1,5 +1,4 @@
-import React, { ReactSVGElement } from "react";
-import { keyof } from "zod";
+import React from "react";
 
 type IconMap = Record<string, (props: SvgProps) => React.ReactElement>;
 

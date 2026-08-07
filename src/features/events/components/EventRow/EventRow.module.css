@@ -40,7 +40,7 @@
 	word-break: break-all;
 }
 
-@media screen and (max-width: 675px) {
+@media (max-width: 675px) {
 	.wrapper_content > *:not(:first-child) {
 		border: none;
 		padding: 0px;

@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		/* Módulo e Resolução para Vite */
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"jsx": "react-jsx",
+		"noEmit": true,
+
+		/* Suporte para migração gradual de JS/JSX para TS/TSX */
+		"allowJs": true,
+		"checkJs": false,
+
+		/* Configuração moderna de Path Alias (sem baseUrl) */
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+
+		/* Tipagem, Segurança e Verificações */
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+		"skipLibCheck": true
+	},
+	"include": ["src"]
+}
