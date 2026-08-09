@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { CreateEventModal, EventBase } from "@/features/events";
 import { useEvents, useModal } from "@/hooks";
 import { Button, SectionHeader } from "@/shared";
-import { getDaysRemaining, getDaysElapsed } from "@/utils/date";
+import { getDaysRemaining, getRemainingProgressPercentage } from "@/utils/date";
 import basedStyles from "@/features/events/components/EventBase/EventBase.module.css";
 import styles from "./Events.module.css";
 import { SORTERS, useSorter, type SortKeyType } from "@/hooks/useSorter";
@@ -65,7 +65,7 @@ export function Events() {
 				{sortedEvents.length > 0 ? (
 					sortedEvents.map((event) => {
 						const daysRemaining = getDaysRemaining(event.expirationDate);
-						const daysElapsed = getDaysElapsed(event.creationDate, event.expirationDate);
+						const daysElapsed = getRemainingProgressPercentage(event.creationDate, event.expirationDate);
 
 						return (
 							<EventBase

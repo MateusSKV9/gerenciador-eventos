@@ -1,14 +1,18 @@
 import { differenceInDays, parseISO, startOfDay } from "date-fns";
 
-export const getDaysRemaining = (expirationDate: string) => {
-	const today = startOfDay(new Date());
+export const getDaysRemaining = (expirationDate: string, baseDate: Date | string = new Date()) => {
+	const today = startOfDay(typeof baseDate === "string" ? parseISO(baseDate) : baseDate);
 	const end = startOfDay(parseISO(expirationDate));
 
 	return differenceInDays(end, today);
 };
 
-export const getDaysElapsed = (creationDate: string, expirationDate: string) => {
-	const today = startOfDay(new Date());
+export const getRemainingProgressPercentage = (
+	creationDate: string,
+	expirationDate: string,
+	baseDate: Date | string = new Date()
+) => {
+	const today = startOfDay(typeof baseDate === "string" ? parseISO(baseDate) : baseDate);
 	const start = startOfDay(parseISO(creationDate));
 	const end = startOfDay(parseISO(expirationDate));
 
