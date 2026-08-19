@@ -4,6 +4,10 @@ import { getDaysRemaining, getRemainingProgressPercentage } from "./date";
 describe("Utils - date.ts", () => {
 	const MOCK_TODAY = "2026-08-07";
 
+	// ==========================================
+	// 1. TESTES DE getDaysRemaining
+	// ==========================================
+
 	describe("getDaysRemaining", () => {
 		it("deve calcular corretamente os dias restantes para uma data futura", () => {
 			const expirationDate = "2026-08-12";
@@ -36,6 +40,10 @@ describe("Utils - date.ts", () => {
 		});
 	});
 
+	// ==========================================
+	// 2. TESTES DE getRemainingProgressPercentage
+	// ==========================================
+
 	describe("getRemainingProgressPercentage", () => {
 		it("deve calcular a porcentagem restante no meio do ciclo do evento", () => {
 			const creationDate = "2026-08-01";
@@ -66,7 +74,7 @@ describe("Utils - date.ts", () => {
 			const creationDate = "2026-08-10";
 			const expirationDate = "2026-08-10";
 
-			expect(getRemainingProgressPercentage(creationDate, expirationDate, MOCK_TODAY)).toBe(100);
+			expect(getRemainingProgressPercentage(creationDate, expirationDate, MOCK_TODAY)).toBe(0);
 		});
 	});
 });

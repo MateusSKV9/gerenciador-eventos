@@ -1,7 +1,7 @@
-import { renderHook, act } from "@testing-library/react";
 import { describe, it, expect, beforeEach } from "vitest";
-import { EventProvider } from "./EventProvider";
+import { renderHook, act } from "@testing-library/react";
 import { useEvents } from "@/hooks/useEvents";
+import { EventProvider } from "./EventProvider";
 
 const wrapper = ({ children }: { children: React.ReactNode }) => <EventProvider>{children}</EventProvider>;
 
@@ -9,10 +9,12 @@ describe("useEvents", () => {
 	beforeEach(() => {
 		localStorage.clear();
 	});
+
 	it("deve carregar os eventos iniciais quando não há dados no localStorage", () => {
 		const { result } = renderHook(() => useEvents(), { wrapper });
 		expect(result.current.events.length).toBe(3);
 	});
+
 	it("deve criar um novo evento", () => {
 		const { result } = renderHook(() => useEvents(), { wrapper });
 		act(() => {
@@ -26,6 +28,7 @@ describe("useEvents", () => {
 		expect(result.current.events.length).toBe(4);
 		expect(result.current.events[3].name).toBe("Novo Evento");
 	});
+
 	it("deve atualizar um evento existente", () => {
 		const { result } = renderHook(() => useEvents(), { wrapper });
 		act(() => {
@@ -39,6 +42,7 @@ describe("useEvents", () => {
 		const updated = result.current.getEvent("1");
 		expect(updated?.name).toBe("Evento Atualizado");
 	});
+
 	it("deve remover um evento", () => {
 		const { result } = renderHook(() => useEvents(), { wrapper });
 		act(() => {
@@ -47,6 +51,7 @@ describe("useEvents", () => {
 		expect(result.current.events.length).toBe(2);
 		expect(result.current.getEvent("1")).toBeUndefined();
 	});
+
 	it("deve persistir os eventos no localStorage", () => {
 		const { result } = renderHook(() => useEvents(), { wrapper });
 		act(() => {
@@ -62,6 +67,7 @@ describe("useEvents", () => {
 		expect(parsed.length).toBe(4);
 		expect(parsed[3].name).toBe("Persistido");
 	});
+
 	it("deve sincronizar o estado com o localStorage na inicialização", () => {
 		const mockEvents = [
 			{
@@ -73,6 +79,7 @@ describe("useEvents", () => {
 				expirationDate: "2026-01-10",
 			},
 		];
+
 		localStorage.setItem("events", JSON.stringify(mockEvents));
 		const { result } = renderHook(() => useEvents(), { wrapper });
 		expect(result.current.events.length).toBe(1);

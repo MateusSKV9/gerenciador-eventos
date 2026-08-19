@@ -19,7 +19,7 @@ export const getRemainingProgressPercentage = (
 	const totalDays = differenceInDays(end, start);
 	const elapsed = differenceInDays(today, start);
 
-	if (totalDays <= 0) return 100;
+	if (totalDays <= 0) return 0;
 	const percentage = (elapsed / totalDays) * 100;
 
 	return 100 - Math.min(Math.max(percentage, 0), 100);
