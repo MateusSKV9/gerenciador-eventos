@@ -148,6 +148,34 @@ O objetivo foi construir uma solução prática para organização de compromiss
 
 ---
 
+## 🧪 Testes Automatizados
+
+O projeto conta com uma cobertura completa de **testes unitários e de integração** utilizando **Vitest** e **React Testing Library**, garantindo integridade das regras de negócio, validações de formulário e persistência do estado global.
+
+### 🎯 O que é testado:
+
+- **Funções Utilitárias (`date.test.ts`):**
+  - Cálculo de dias restantes para datas futuras, presentes e passadas.
+  - Regras para anos bissextos e viradas de ano.
+  - Tratamento de entradas e datas inválidas.
+  - Cálculo da porcentagem de progresso do evento com base no ciclo de vida.
+
+- **Validação de Schemas Zod (`eventSchema.test.ts`):**
+  - Validação de payload completo de evento e dados de formulário.
+  - Rejeição e tratamento de falhas para datas expiradas ou passadas.
+
+- **Gerenciamento de Eventos (`EventProvider.test.tsx`):**
+  - Inicialização com dados padrão e sincronização com `localStorage`.
+  - Operações completas de **CRUD** de eventos via hook `useEvents`.
+  - Persistência contínua do estado no armazenamento local.
+
+- **Gerenciamento de Categorias (`CategoryProvider.test.tsx`):**
+  - Inicialização e busca individual por ID via `getCategory`.
+  - Operações completas de **CRUD** de categorias (criação, edição e exclusão) via `useCategories`.
+  - Persistência e restauração do estado de categorias no `localStorage`.
+
+---
+
 ## 📁 Estrutura de Pastas
 
 A aplicação segue uma organização pensada para projetos escaláveis:
@@ -177,6 +205,7 @@ src
 - **TypeScript**
 - **CSS Modules**
 - **date-fns**
+- **Vitest / Testing Library**
 - **Vite**
 - **LocalStorage**
 
